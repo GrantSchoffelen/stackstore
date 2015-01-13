@@ -17,12 +17,18 @@ angular.module('stackstoreApp')
             return products;
         });
       },
-      post: function  (data) {
-        return $http.post('/api/carts', data).success(function (cartLoad) {
-          return cartLoad;
+      post: function  (product) {
+        var cart = {
+          lineItems: {
+            productId: product._id,
+            purchasePrice: 299,
+          }
+        };
+        console.log("sgsfgs",cart)
+        return $http.post('/api/carts', cart).then(function (response) {
+          console.log(response)
+          return response.data;
           // body...
-        }).error(function (error) {
-          console.log(error)
         })
       },
       get: function(id) {
