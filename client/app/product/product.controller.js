@@ -8,6 +8,10 @@ angular.module('stackstoreApp')
 
     $scope.product = Product.get(parseInt($stateParams.id));
     console.log($scope.product);
+
+     $scope.addToCart= function(){
+        $http.post()
+    };
   })
 ///this is for when we get to http get request
   // .controller('ProductDetailCtrl', function($scope, Product, $stateParams) {
