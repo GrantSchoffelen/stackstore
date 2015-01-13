@@ -22,6 +22,7 @@ exports.show = function(req, res) {
 
 // Creates a new cart in the DB.
 exports.create = function(req, res) {
+  console.log('vreating cart req.body:', req.body);
   Cart.create(req.body, function(err, cart) {
     if(err) { return handleError(res, err); }
     console.log(cart)
