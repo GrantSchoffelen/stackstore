@@ -33,8 +33,10 @@ angular.module('stackstoreApp')
 
     // console.log($scope.product)
   $scope.addToCart = function(data){
-  var cart = {productIdArray: [$scope.product._id]}
-    Product.post(cart);
+  var cart = {lineItems:[{productId: $scope.product._id,
+                purchasePrice:  $scope.product.price,
+             }]};
+    Product.post($scope.product);
     console.log(cart)
 }
 

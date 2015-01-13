@@ -24,6 +24,7 @@ exports.show = function(req, res) {
 exports.create = function(req, res) {
   Cart.create(req.body, function(err, cart) {
     if(err) { return handleError(res, err); }
+    console.log(cart)
     return res.json(201, cart);
   });
 };
