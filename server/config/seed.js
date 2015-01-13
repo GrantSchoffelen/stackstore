@@ -7,8 +7,35 @@
 
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
-var Product = require('../api/product/product.model')
-var Category = require('../api/categories/categories.model')
+var Product = require('../api/product/product.model'); 
+var Category = require('../api/categories/categories.model'); 
+var Order = require('../api/orders/orders.model'); 
+var Cart = require('../api/cart/cart.model'); 
+
+
+Order.find({}).remove(function() {
+  Order.create({
+  cartId: "54b547f72bfa3d6e05706d63",
+  userId: "54b547f72bfa3d6e05706d56",
+  orderDate: 'Tue, 13 Jan 2015 17:10:53 GMT',
+  orderStatus: 'Completed'
+});
+});
+
+
+Cart.find({}).remove(function() {
+  Cart.create({
+  userId: "54b547f72bfa3d6e05706d56",
+  cartCreationDate: 'Tue, 13 Jan 2015 17:10:53 GMT',
+  isActive: false,
+  lineItems: {quantity: 1, 
+         productId: "54b547f72bfa3d6e05706d60", 
+         purchasePrice:  45.98, 
+         tax: 0.07, 
+         shipping: 3.99
+        }
+});
+});
 
 Product.find({}).remove(function() {
   Product.create({ 
@@ -176,6 +203,8 @@ Category.find({}).remove(function() {
     name : 'electronics'
   });
 });
+
+
 
 
 // Thing.find({}).remove(function() {
