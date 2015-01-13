@@ -7,7 +7,9 @@
           <img class="media-object img-rounded" ng-src="{{product.image}}">
 
           <div class="text-center" ng-show="!currentUser">
-            <a class="btn btn-block btn-primary" href="#/cart/cart.id">Add to Cart</a>
+            <!-- <a class="btn btn-block btn-primary" href="/cart/cart.id">Add to Cart</a> -->
+            <button class="btn btn-block btn-primary" ng-click='addToCart()'>Add To Cart</button>
+             <a class="btn btn-block btn-primary" href="/cart/cart.id">see Cart</a>
           </div>
         </div>
         <div class="media-body">
@@ -48,5 +50,3 @@
     </div>
   </div>
 </div>
-
-{{product}}

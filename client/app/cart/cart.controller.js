@@ -2,5 +2,7 @@
 
 angular.module('stackstoreApp')
   .controller('CartCtrl', function ($scope) {
-    $scope.message = 'Hello';
+    // $scope.message = 'Hello';
+    $scope.cart = {}
+
   });
