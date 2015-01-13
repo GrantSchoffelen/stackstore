@@ -32,13 +32,11 @@ angular.module('stackstoreApp')
     // };
 
     // console.log($scope.product)
-  $scope.addToCart = function(data){
-  var cart = {lineItems:[{productId: $scope.product._id,
-                purchasePrice:  $scope.product.price,
-             }]};
-    Product.post($scope.product);
-    console.log(cart)
-}
+    $scope.addToCart = function(data) {
+        Product.post($scope.product).then(function(cartData) {
+            console.log(cartData);
+        });
+    }
 
 
      // $scope.addToCart= function($stateParams){
