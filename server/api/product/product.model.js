@@ -6,10 +6,15 @@ var mongoose = require('mongoose'),
 var ProductSchema = new Schema({
   name: String,
   description: String,
-  price: Number,
+  price: String,
   isAvailable: Boolean,
   pictures: Array,
   categories: Array
 });
 
 module.exports = mongoose.model('Product', ProductSchema);
+
+
+
+
+
