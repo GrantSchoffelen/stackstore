@@ -4,11 +4,11 @@
     <div class="panel-body">
       <div class="media">
         <div class="pull-left">
-          <img class="media-object img-rounded" ng-src="{{product.image}}">
+          <img class="media-object img-rounded" ng-src="{{product.pictures[0]}}">
 
           <div class="text-center" ng-show="!currentUser">
             <!-- <a class="btn btn-block btn-primary" href="/cart/cart.id">Add to Cart</a> -->
-            <button class="btn btn-block btn-primary" ng-click='addToCart()'>Add To Cart</button>
+            <button ng-click='addToCart($scope.product)'class="btn btn-block btn-primary">Add To Cart</button>
              <a class="btn btn-block btn-primary" href="/cart/cart.id">see Cart</a>
           </div>
         </div>
@@ -19,7 +19,7 @@
           </h2>
 
           <h5>
-            Status: <span class="text-danger">On Sale</span>
+            Status: <span class="text-danger">{{product.isAvailable}}</span>
           </h5>
           <h4><i>Description:</i></h4>
           <p>{{product.description}}</p>

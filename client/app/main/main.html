@@ -103,7 +103,7 @@
               <ul class='list-inline'>
              <li ng-repeat='product in products | limitTo: 7'>
                <h1>{{product.name}} is {{product.price}}</h1>
-               <a href="/product/{{product.id}}"><img ng-src='{{product.image}}'></a>
+               <a href="/product/{{product._id}}"><img ng-src='{{product.pictures[0]}}'></a>
              </li>
              </ul>
             </div>

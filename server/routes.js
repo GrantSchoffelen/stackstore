@@ -13,8 +13,8 @@ module.exports = function(app) {
 
 
 
-  app.use('/y', require('./api/review'));
-  app.use('/y', require('./api/product'));
+  app.use('/api/review', require('./api/review'));
+  app.use('/api/product', require('./api/product'));
 
   app.use('/api/carts', require('./api/cart'));
   app.use('/api/orderss', require('./api/orders'));

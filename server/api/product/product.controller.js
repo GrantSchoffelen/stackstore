@@ -7,9 +7,11 @@ var Product = require('./product.model');
 exports.index = function(req, res) {
   Product.find(function (err, products) {
     if(err) { return handleError(res, err); }
+    console.log("this is", products)
     return res.json(200, products);
   });
 };
+
 
 // Get a single product
 exports.show = function(req, res) {
