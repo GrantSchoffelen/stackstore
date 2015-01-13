@@ -10,3 +10,18 @@
     </li>
   </ul>
 </div>
+
+<button ng-click="addProduct(product)">Add Product</button>
+<div class="container">
+  <p>Add, edit or delete products.</p>
+  <ul class="list-group">
+    <li class="list-group-item" ng-repeat="product in products">
+        <strong>{{product.name}}</strong><br>
+<a href="#" editable-text="product.name" >
+    {{product.name}}
+  </a>
+        <span class="text-muted">{{product.price}}</span>
+        <a ng-click="deleteProduct(product)" class="trash"><span class="glyphicon glyphicon-trash pull-right">del</span></a>
+    </li>
+  </ul>
+</div>
