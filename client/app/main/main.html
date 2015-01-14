@@ -89,7 +89,6 @@
 </header> -->
 <div class="intro-header">
 <div class="container">
-<a class="btn btn-block btn-primary" href="/cart">see Cart</a>
 <div class="row">
 <div class="col-lg-12">
   <div class="intro-message">
@@ -128,7 +127,12 @@
     <h3>{{product.name}}</h3>
     <p>{{product.description | limitTo: 98}}...</p>
     <p>
+<!-- <<<<<<< Updated upstream
     <button ng-click='addToCart($scope.product)' class="btn btn-primary">Buy Now!</button> <a href="/product/{{product._id}}" class="btn btn-default">More Info</a>
+======= -->
+    <button ng-click='addToCart(product)' class="btn btn-primary mainAddCart">Add to Cart!</button>
+    <a href="/product/{{product._id}}" class="btn btn-default moreInfo">More Info</a>
+
     </p>
   </div>
 </div>
@@ -149,7 +153,7 @@
     <div class="col-lg-12">
       <ul class="list-inline">
         <li>
-          <a href="#">Home</a>
+          <a href="#/">Home</a>
         </li>
         <li class="footer-menu-divider">&sdot;</li>
         <li>
