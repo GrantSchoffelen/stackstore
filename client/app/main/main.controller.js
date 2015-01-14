@@ -3,17 +3,18 @@
 angular.module('stackstoreApp')
     .controller('MainCtrl', function($scope, Product, $http, socket) {
         // $scope.awesomeThings = [];
-        return Product.all().success(function(data){
+        Product.all().success(function(data){
           $scope.products = data
-         return $scope.products
+          // return $scope.products
         });
+
         // return $http.get('/api/product').success(function(products) {
         //     $scope.products = products;
         //     return $scope.products
         //         // console.log(cartData)
         // })
-    $scope.addToCart = function(data) {
-        Product.post($scope.product).then(function(cartData) {
+    $scope.addToCart = function(product) {
+        Product.post(product).then(function(cartData) {
             console.log(cartData);
         });
     }

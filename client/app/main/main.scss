@@ -201,8 +201,22 @@ p.copyright {
 }
 
 .hero11 {
-
+  height: 450px;
+  width: 254px;
 }
+@media(min-width:700px) {
+.mainAddCart {
+  position: absolute;
+  bottom: 43px;
+  left: 30px;
+}
+.moreInfo{
+  position: absolute;
+  bottom: 43px;
+  right: 30px;
+}
+}
+
 
 footer {
     margin: 50px 0;
