@@ -12,6 +12,11 @@ angular.module('stackstoreApp')
         //     return $scope.products
         //         // console.log(cartData)
         // })
+    $scope.addToCart = function(data) {
+        Product.post($scope.product).then(function(cartData) {
+            console.log(cartData);
+        });
+    }
     });
 // $http.get('/api/things').success(function(awesomeThings) {
 //   $scope.awesomeThings = awesomeThings;

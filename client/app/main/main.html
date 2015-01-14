@@ -69,10 +69,37 @@
 </div>
 
  -->
-
+      <!-- here is the old html -->
       <!-- Header -->
-    <a name="about"></a>
-    <div class="intro-header">
+  <!--   <a name="about"></a>
+
+
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <h1 class="page-header">Categories</h1>
+              <ul class='list-inline'>
+             <li ng-repeat='product in products | limitTo: 7'>
+               <h1>{{product.name}} is {{product.price}}</h1>
+               <a href="/product/{{product._id}}"><img ng-src='{{product.pictures[0]}}'></a>
+             </li>
+             </ul>
+            </div>
+          </div>
+
+
+
+    <!-- Page Content -->
+
+
+        <!-- Jumbotron Header -->
+      <!--   <header class="jumbotron hero-spacer">
+            <h1>A Warm Welcome!</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
+            <p><a class="btn btn-primary btn-large">Call to action!</a>
+            </p>
+        </header> -->
+        <div class="intro-header">
         <div class="container">
             <a class="btn btn-block btn-primary" href="/cart">see Cart</a>
             <div class="row">
@@ -96,21 +123,41 @@
             </div>
         </div>
 
+        <hr>
         <div class="container">
-          <div class="row">
+        <!-- Title -->
+        <div class="row">
             <div class="col-lg-12">
-              <h1 class="page-header">Categories</h1>
-              <ul class='list-inline'>
-             <li ng-repeat='product in products | limitTo: 7'>
-               <h1>{{product.name}} is {{product.price}}</h1>
-               <a href="/product/{{product._id}}"><img ng-src='{{product.pictures[0]}}'></a>
-             </li>
-             </ul>
+                <h3>Latest Features</h3>
             </div>
-          </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Page Features -->
+        <div class=" jumbotron row text-center">
+
+            <div ng-repeat='product in products' class="col-md-3 col-sm-6 hero-feature" >
+                <div class="thumbnail hero11">
+                  <a href="/product/{{product._id}}"><img ng-src='{{product.pictures[0]}}' height="350" width="150" class="img-responsive"></a>
+
+                    <div class="caption">
+                        <h3>{{product.name}}</h3>
+                        <p>{{product.description | limitTo: 98}}...</p>
+                        <p>
+                            <button ng-click='addToCart($scope.product)' class="btn btn-primary">Buy Now!</button> <a href="/product/{{product._id}}" class="btn btn-default">More Info</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
 
 
-    <footer>
+
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+          <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -136,3 +183,6 @@
             </div>
         </div>
     </footer>
+    <!-- /.container -->
+
+
