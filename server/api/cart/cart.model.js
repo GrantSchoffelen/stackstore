@@ -8,6 +8,8 @@ var CartSchema = new Schema({
   cartCreationDate: Date,
   isActive: Boolean,
   name: String,
+  picture: Array,
+  categories: Array,
   lineItems: {quantity: Number,
   			 productId: [{ type: Schema.Types.ObjectId, ref: 'product'}],
   			 purchasePrice:  Number,
