@@ -8,9 +8,9 @@ angular.module('stackstoreApp')
         templateUrl: 'app/cart/cart.html',
         controller: 'CartCtrl'
       })
-      .state('cart_add', {
-        url: '/cart/cart.id',
-        templateUrl: 'app/cart/cart.html',
-        controller: 'CartCtrl'
-      });
+      // .state('cart_add', {
+      //   url: '/cart/cart.id',
+      //   templateUrl: 'app/cart/cart.html',
+      //   controller: 'CartCtrl'
+      // });
   });

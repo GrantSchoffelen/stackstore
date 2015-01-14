@@ -22,6 +22,7 @@ angular.module('stackstoreApp')
           lineItems: {
             productId: product._id,
             purchasePrice: 299,
+            name: product.name,
           }
         };
         console.log("sgsfgs",cart)
@@ -52,7 +53,15 @@ angular.module('stackstoreApp')
       });
 
       return deferred.promise
-    }
+     },
+    cart: function(){
+        var products;
+        return $http.get('/api/carts').success(function(data) {
+          //console.log(data)
+          products = data;
+            return products;
+        });
+      }
   }
   });
 
