@@ -121,17 +121,22 @@
 <!-- Page Features -->
 <div class=" jumbotron row text-center">
 <div ng-repeat='product in products' class="col-md-3 col-sm-6 hero-feature" >
-<div class="thumbnail hero11">
+  <div class="thumbnail hero11">
   <a href="/product/{{product._id}}"><img ng-src='{{product.pictures[0]}}' height="350" width="150" class="img-responsive"></a>
   <div class="caption">
     <h3>{{product.name}}</h3>
-    <p>{{product.description | limitTo: 98}}...</p>
+    <p>{{product.description | limitTo: 10}}...</p>
     <p>
-<!-- <<<<<<< Updated upstream
-    <button ng-click='addToCart($scope.product)' class="btn btn-primary">Buy Now!</button> <a href="/product/{{product._id}}" class="btn btn-default">More Info</a>
-======= -->
-    <button ng-click='addToCart(product)' class="btn btn-primary mainAddCart">Add to Cart!</button>
-    <a href="/product/{{product._id}}" class="btn btn-default moreInfo">More Info</a>
+
+
+    <!-- <button ng-click='addToCart($scope.product)' class="btn btn-primary">Buy Now!</button> <a href="/product/{{product._id}}" class="btn btn-default">More Info</a> -->
+
+   <<!--  <button ng-click='addToCart(product)' class="btn btn-primary mainAddCart">Add to Cart!</button>
+    <a href="/product/{{product._id}}" class="btn btn-default moreInfo">More Info</a> -->
+
+
+    <button ng-click='addToCart(product)' class="btn btn-primary">Buy Now!</button>
+    <a href="/product/{{product._id}}" class="btn btn-default">More Info</a>
 
     </p>
   </div>
@@ -147,6 +152,11 @@
 <p>
 </md-card>
 <hr>
+
+
+
+
+ <!--      start of Footer -->
 <footer>
 <div class="container">
   <div class="row">
