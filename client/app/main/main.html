@@ -1,138 +1,172 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 <!--
- <form class="thing-form">
-    <label>Syncs in realtime across clients</label>
-    <p class="input-group">
-      <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="newThing">
-      <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="addThing()">Add New</button>
-      </span>
-    </p>
-  </form>
+<form class="thing-form">
+  <label>Syncs in realtime across clients</label>
+  <p class="input-group">
+  <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="newThing">
+  <span class="input-group-btn">
+  <button type="submit" class="btn btn-primary" ng-click="addThing()">Add New</button>
+  </span>
+  </p>
+</form>
 </div>
-
 <footer class="footer">
-  <div class="container">
-      <p>Angular Fullstack v2.0.13 |
-        <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
-         <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
-  </div>
+<div class="container">
+  <p>Angular Fullstack v2.0.13 |
+  <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
+  <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
+</div>
 </footer> -->
 <!--
 <form class="search-product-form">
-    <label>Check out our cool products</label>
-    <p class="input-group">
+<label>Check out our cool products</label>
+<p class="input-group">
+<input type="text" class="form-control" placeholder="search" ng-model="products.name">
+<span class="input-group-btn">
+<button type="submit" class="btn btn-primary" ng-click="addThing()">Search</button>
+</span>
+</p>
+</form>
+</div>
+<div class="container">
+<div class="row">
+<div class="col-lg-12">
+  <h1 class="page-header">Categories</h1>
+  <div ng-repeat='categorie in categories'>
+    <a href="/categorie.name"></a> {{categorie.name}}
+  </div> -->
+<!--   </div>
+</div> <form class="thing-form">
+<label>Syncs in realtime across clients</label>
+<p class="input-group">
+<input type="text" class="form-control" placeholder="Add a new thing here." ng-model="newThing">
+<span class="input-group-btn">
+<button type="submit" class="btn btn-primary" ng-click="addThing()">Add New</button>
+</span>
+</p>
+</form>
+</div> -->
+<!-- <footer class="footer">
+<div class="container">
+<p>Angular Fullstack v2.0.13 |
+<a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
+<a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
+</div>
+</footer> -->
+<!-- <form class="search-product-form">
+<label>Check out our cool products</label>
+<p class="input-group">
+<input type="text" class="form-control" placeholder="search" ng-model="products.name">
+<span class="input-group-btn">
+<button type="submit" class="btn btn-primary" ng-click="addThing()">Search</button>
+</span>
+</p>
+</form>
+</div>
+-->
+<!-- here is the old html -->
+<!-- Header -->
+<!--   <a name="about"></a>
+<div class="container">
+<div class="row">
+<div class="col-lg-12">
+<h1 class="page-header">Categories</h1>
+<ul class='list-inline'>
+<li ng-repeat='product in products | limitTo: 7'>
+  <h1>{{product.name}} is {{product.price}}</h1>
+  <a href="/product/{{product._id}}"><img ng-src='{{product.pictures[0]}}'></a>
+</li>
+</ul>
+</div>
+</div>
+<!-- Page Content -->
+<!-- Jumbotron Header -->
+<!--   <header class="jumbotron hero-spacer">
+<h1>A Warm Welcome!</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
+<p><a class="btn btn-primary btn-large">Call to action!</a>
+</p>
+</header> -->
+<div class="intro-header">
+<div class="container">
+<a class="btn btn-block btn-primary" href="/cart">see Cart</a>
+<div class="row">
+<div class="col-lg-12">
+  <div class="intro-message">
+    <h1>Stack Store</h1>
+    <form class="search-product-form">
+      <p class="input-group">
       <input type="text" class="form-control" placeholder="search" ng-model="products.name">
       <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="addThing()">Search</button>
+      <button type="submit" class="btn btn-primary" ng-click="addThing()">Search</button>
       </span>
-    </p>
-  </form>
+      </p>
+    </form>
+  </div>
+  <h3>Your one stop shop For anything you want!</h3>
+  <h3>Better then Amazon!</h3>
+  <hr class="intro-divider">
 </div>
-
+</div>
+</div>
+</div>
+<hr>
+<div class="container">
+<!-- Title -->
+<div class="row">
+<div class="col-lg-12">
+<h3>Latest Features</h3>
+</div>
+</div>
+<!-- /.row -->
+<!-- Page Features -->
+<div class=" jumbotron row text-center">
+<div ng-repeat='product in products' class="col-md-3 col-sm-6 hero-feature" >
+<div class="thumbnail hero11">
+  <a href="/product/{{product._id}}"><img ng-src='{{product.pictures[0]}}' height="350" width="150" class="img-responsive"></a>
+  <div class="caption">
+    <h3>{{product.name}}</h3>
+    <p>{{product.description | limitTo: 98}}...</p>
+    <p>
+    <button ng-click='addToCart($scope.product)' class="btn btn-primary">Buy Now!</button> <a href="/product/{{product._id}}" class="btn btn-default">More Info</a>
+    </p>
+  </div>
+</div>
+</div>
+</div>
+<!-- /.row -->
+<!-- start of material-ui -->
+<md-card class="animate yourscore" layout="column" style="background-color:#F5F5F5; padding-left:5px; padding-right:5px; width:550px;" ng-show="showDetails">
+<div class="caption">
+<h3>{{product.name}}</h3>
+<p>{{product.description | limitTo: 98}}...</p>
+<p>
+</md-card>
+<hr>
+<footer>
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Categories</h1>
-     <div ng-repeat='categorie in categories'>
-       <a href="/categorie.name"></a> {{categorie.name}}
-     </div> -->
-  <!--   </div>
-  </div> <form class="thing-form">
-    <label>Syncs in realtime across clients</label>
-    <p class="input-group">
-      <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="newThing">
-      <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="addThing()">Add New</button>
-      </span>
-    </p>
-  </form>
-</div> -->
-
-<!-- <footer class="footer">
-  <div class="container">
-      <p>Angular Fullstack v2.0.13 |
-        <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
-         <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
+      <ul class="list-inline">
+        <li>
+          <a href="#">Home</a>
+        </li>
+        <li class="footer-menu-divider">&sdot;</li>
+        <li>
+          <a href="#about">About</a>
+        </li>
+        <li class="footer-menu-divider">&sdot;</li>
+        <li>
+          <a href="#services">Services</a>
+        </li>
+        <li class="footer-menu-divider">&sdot;</li>
+        <li>
+          <a href="#contact">Contact</a>
+        </li>
+      </ul>
+      <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>
+    </div>
   </div>
-</footer> -->
-
-<!-- <form class="search-product-form">
-    <label>Check out our cool products</label>
-    <p class="input-group">
-      <input type="text" class="form-control" placeholder="search" ng-model="products.name">
-      <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="addThing()">Search</button>
-      </span>
-    </p>
-  </form>
 </div>
-
- -->
-
-      <!-- Header -->
-    <a name="about"></a>
-    <div class="intro-header">
-        <div class="container">
-            <a class="btn btn-block btn-primary" href="/cart">see Cart</a>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="intro-message">
-                        <h1>Stack Store</h1>
-                        <form class="search-product-form">
-                          <p class="input-group">
-                            <input type="text" class="form-control" placeholder="search" ng-model="products.name">
-                            <span class="input-group-btn">
-                              <button type="submit" class="btn btn-primary" ng-click="addThing()">Search</button>
-                            </span>
-                          </p>
-                        </form>
-                      </div>
-                        <h3>Your one stop shop For anything you want!</h3>
-                        <h3>Better then Amazon!</h3>
-                        <hr class="intro-divider">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12">
-              <h1 class="page-header">Categories</h1>
-              <ul class='list-inline'>
-             <li ng-repeat='product in products | limitTo: 7'>
-               <h1>{{product.name}} is {{product.price}}</h1>
-               <a href="/product/{{product._id}}"><img ng-src='{{product.pictures[0]}}'></a>
-             </li>
-             </ul>
-            </div>
-          </div>
-
-
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">Home</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="#about">About</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="#services">Services</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="#contact">Contact</a>
-                        </li>
-                    </ul>
-                    <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+</footer>
+<!-- /.container -->
