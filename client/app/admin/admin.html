@@ -26,7 +26,7 @@
 
 <button ng-click="addProduct(product)">Add Product</button>
 <div class="container">
-  <p>Add, edit or delete products.</p>
+  <p>Add, edit or delete products</p>
   <ul class="list-group">
     <li class="list-group-item" ng-repeat="product in products">
      
@@ -37,7 +37,7 @@
 
 
 <div ng-show="addProductForm.$visible">Product Categories
-      <a href="#" editable-checklist="product.categories"  e-name='addProductFor' ng-show="addProductForm.$visible" e-ng-options="category.name for category in categories" > {{showCategories(product)}}</a></div>
+      <br><a href="#" editable-checklist="product.categories"  e-name='addProductFor' ng-show="addProductForm.$visible" e-ng-options="category.name for category in categories" > {{showCategories(product)}}</a></div>
 
     
 
@@ -49,35 +49,28 @@
 
       <form editable-form name="addProductForm" onaftersave="update(product)" >
         <div ng-show="addProductForm.$visible">Product Name</div>
+        <button type="button" ng-click="addProductForm.$show()" ng-show="!addProductForm.$visible" ng-hide="addProductForm.$visible" class="pull-right">Edit Product</button>
         <strong editable-textarea="product.name" e-cols='65' e-rows='1'>{{product.name}}</strong><br>
 
         <div ng-show="addProductForm.$visible">Product Price
-        <span class="text-muted" editable-text="product.price">{{product.price}}</span></div>
+        <br><span class="text-muted" editable-text="product.price">{{product.price}}</span>
+      </div>
         <div ng-show="addProductForm.$visible">Product Description
-        <span class="text-muted" editable-text="product.description" ng-show="addProductForm.$visible">{{product.description}}</span></div>
+        <br><span class="text-muted" editable-text="product.description" ng-show="addProductForm.$visible">{{product.description}}</span></div>
       
 
 
 
         <div ng-show="addProductForm.$visible">is available?
-        <span class="text-muted" editable-select="product.isAvailable" e-name='addProductForm' ng-show="addProductForm.$visible" e-ng-options="s for s in [true, false]">{{product.isAvailable}}</span></div>
+        <br><span class="text-muted" editable-select="product.isAvailable" e-name='addProductForm' ng-show="addProductForm.$visible" e-ng-options="s for s in [true, false]">{{product.isAvailable}}</span></div>
       
         <div ng-show="addProductForm.$visible">Product Pictures
-        <span class="text-muted" editable-text="product.pictures[0]">{{product.pictures[0]}}</span></div>
-       
-
- 
-
-
-
-        <!-- <div ng-show="addProductForm.$visible">Product Categoriesk, {{showCategories()}}
-        <a href="#" editable-checklist="category.name" e-name='addProductForm' ng-show="addProductForm.$visible" e-ng-options="category.name for category in categories" > {{showCategories()}}</a></div> -->
+        <br><span class="text-muted" editable-text="product.pictures[0]">{{product.pictures[0]}}</span></div>
         
+<br>
 
 
 
-
-        <button type="button" ng-click="addProductForm.$show()" ng-show="!addProductForm.$visible" ng-hide="addProductForm.$visible">Edit Product</button>
         <div>
           <span ng-show="addProductForm.$visible">
           <button type="submit" class="glyphicon glyphicon-saved" ng-disabled="addProductForm.$waiting">
