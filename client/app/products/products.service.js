@@ -18,18 +18,19 @@ angular.module('stackstoreApp')
                 });
             },
             post: function(product) {
+                console.log(product, 'producttttttttttttttttttttttt')
                 var cart = {
                     Date: Date,
-                    isActive: product.isAvailable,
-                    name: product.name,
-                    picture: product.pictures,
-                    categories: product.categories,
+                    isActive: true,
                     lineItems: {
-                        quantity: 2,
+                        quantity: 1,
                         productId: product._id,
                         purchasePrice: product.price,
                         tax: (product.price * 0.08),
                         shipping: (product.price * 0.15),
+                        name: product.name,
+                        picture: product.pictures,
+                        categories: product.categories,
                     }
                 };
                 console.log("sgsfgs", cart)
@@ -73,13 +74,17 @@ angular.module('stackstoreApp')
             takeout: function(product) {
                 return $http.delete('/api/carts/' + product._id).then(function(data) {
                     console.log(data)
-                  });
-            }
-
-            // cart: function(callback){
-            //     $http.get('/api/carts').success(callback)
-            //       //console.log(data)
-            //   }
+                });
+            },
+            updateCart: function(product) {
+                    return $http.put('/api/carts/' + cart_id + "/" + product._id).then(function(data) {
+                        console.log(data)
+                    });
+                }
+                // cart: function(callback){
+                //     $http.get('/api/carts').success(callback)
+                //       //console.log(data)
+                //   }
 
         }
     });

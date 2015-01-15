@@ -1,12 +1,33 @@
 'use strict';
 
 angular.module('stackstoreApp')
-    .controller('MainCtrl', function($scope, CategoriesService, Product, $http, socket) {
-        Product.all().success(function(data) {
-            $scope.products = data
-            // return $scope.products
+
+    .controller('MainCtrl', function($scope, Product, CategoriesService, $http, socket, cartFactory, $cookieStore) {
+        // $scope.awesomeThings = [];
+        Product.all().success(function(data){
+          $scope.products = data
+          // return $scope.products
         });
-        $scope.filters = {};
+
+
+        var cart = $cookieStore.get('cart') || {};
+
+
+        // A unlogged user, goes into the site, and create a cart
+        cartFactory.findUsersCart(cart).success(function(cartData) {
+            $cookieStore.put('cart', cartData);
+            console.log(cartData, 'cart dataaaaaaaaaaaaaaaaaaaaaaaaaaa')
+            $scope.cart = cartData;
+            console.log($scope.cart)
+        });
+
+
+        // cartFactory.findUsersCart($scope.cart).success(function(data){
+        //     console.log(data)
+        //     $scope.cart = data
+        //     console.log("Scope.cart-------", $scope.cart)
+        // })
+
         // return $http.get('/api/product').success(function(products) {
         //     $scope.products = products;
         //     return $scope.products
