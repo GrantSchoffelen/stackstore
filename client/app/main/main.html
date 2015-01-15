@@ -87,17 +87,19 @@
 <p><a class="btn btn-primary btn-large">Call to action!</a>
 </p>
 </header> -->
+
 <div class="intro-header">
-<div class="container">
+<div class="container main">
 <div class="row">
 <div class="col-lg-12">
   <div class="intro-message">
     <h1>Stack Store</h1>
     <form class="search-product-form">
       <p class="input-group">
-      <input type="text" class="form-control" placeholder="search" ng-model="search.name">
+      <input type="text" class="form-control" placeholder="search" ng-model="search">
       <span class="input-group-btn">
-      <button type="submit" class="btn btn-primary" ng-click="addThing()">Search</button>
+      <button type="submit" class="btn btn-primary" >Search</button>
+
       </span>
       </p>
     </form>
@@ -114,10 +116,21 @@
 <!-- Title -->
 <div class="row">
 <div class="col-lg-12">
-<h3>Latest Features</h3>
+
+
+
+    <md-button ng-click='searchForCat()'>Click Here To search using Category</md-button>
+  <div class="btn-group">
+     <button ng-repeat="category in categories" ng-click="matchCatWithProds(category)" class="btn btn-primary">
+        {{category.name}}
+     </button>
+     <div>{{cloths}}</div>
+  </div>
+<h3>Latest Products</h3>
 </div>
 </div>
 <!-- /.row -->
+
 <!-- Page Features -->
 <div class=" jumbotron row text-center">
 <div ng-repeat='product in products | filter:search' class="col-md-3 col-sm-6 hero-feature" >
@@ -127,15 +140,7 @@
     <h3>{{product.name}}</h3>
     <p>{{product.description | limitTo: 10}}...</p>
     <p>
-
-
-    <!-- <button ng-click='addToCart($scope.product)' class="btn btn-primary">Buy Now!</button> <a href="/product/{{product._id}}" class="btn btn-default">More Info</a> -->
-
-   <!--  <button ng-click='addToCart(product)' class="btn btn-primary mainAddCart">Add to Cart!</button>
-    <a href="/product/{{product._id}}" class="btn btn-default moreInfo">More Info</a> -->
-
-
-    <button ng-click='addToCart(product)' class="btn btn-primary">Buy Now!</button>
+     <md-button  ng-click='addToCart(product)' class="md-raised md-primary">Buy Now!</md-button>
     <a href="/product/{{product._id}}" class="btn btn-default">More Info</a>
 
     </p>
