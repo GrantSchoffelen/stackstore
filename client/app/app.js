@@ -8,7 +8,8 @@ angular.module('stackstoreApp', [
   'ui.router',
   'ui.bootstrap',
   'xeditable',
-  'checklist-model'
+  'checklist-model',
+  'ngMaterial'
 
 
 ])
