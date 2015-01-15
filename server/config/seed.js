@@ -10,7 +10,7 @@ var User = require('../api/user/user.model');
 var Product = require('../api/product/product.model');
 var Category = require('../api/categories/categories.model');
 var Order = require('../api/orders/orders.model');
-var Cart = require('../api/cart/cart.model');
+// var Cart = require('../api/cart/cart.model');
 
 
 Order.find({}).remove(function() {
@@ -23,19 +23,19 @@ Order.find({}).remove(function() {
 });
 
 
-Cart.find({}).remove(function() {
-  Cart.create({
-  userId: "54b547f72bfa3d6e05706d56",
-  cartCreationDate: 'Tue, 13 Jan 2015 17:10:53 GMT',
-  isActive: false,
-  lineItems: {quantity: 1,
-         productId: "54b547f72bfa3d6e05706d60",
-         purchasePrice:  45.98,
-         tax: 0.07,
-         shipping: 3.99
-        }
-});
-});
+// Cart.find({}).remove(function() {
+//   Cart.create({
+//   userId: "54b547f72bfa3d6e05706d56",
+//   cartCreationDate: 'Tue, 13 Jan 2015 17:10:53 GMT',
+//   isActive: false,
+//   lineItems: {quantity: 1,
+//          productId: "54b547f72bfa3d6e05706d60",
+//          purchasePrice:  0,
+//          tax: 0.00,
+//          shipping: 0
+//         }
+// });
+// });
 
 Product.find({}).remove(function() {
   Product.create({

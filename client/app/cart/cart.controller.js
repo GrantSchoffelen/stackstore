@@ -7,6 +7,7 @@ angular.module('stackstoreApp')
     Product.cart().then(function(data){
       $scope.products = data;
       Product.products = data;
+      console.log('data', data)
 
     })
 
