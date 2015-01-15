@@ -20,6 +20,20 @@ exports.show = function(req, res) {
   });
 };
 
+
+exports.findOrCreateCart = function(req, res) {
+  Cart.findById(req.params.id, function (err, cart) {
+    if(err) { return handleError(res, err); }
+    if(!cart) { Cart.create(req.body, function(err, cart) {
+    if(err) { return handleError(res, err); }
+    console.log(cart)
+    return res.json(201, cart);
+  })}
+    return res.json(cart);
+  });
+};
+
+
 // Creates a new cart in the DB.
 exports.create = function(req, res) {
   console.log('vreating cart req.body:', req.body);
@@ -43,6 +57,7 @@ exports.update = function(req, res) {
     });
   });
 };
+
 
 // Deletes a cart from the DB.
 exports.destroy = function(req, res) {
