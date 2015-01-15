@@ -33,7 +33,7 @@ angular.module('stackstoreApp')
         //         // console.log(cartData)
         // })
     $scope.addToCart = function(product) {
-        Product.post(product).then(function(cartData) {
+        Product.addCart(product).then(function(cartData) {
             console.log(cartData);
         });
     }
