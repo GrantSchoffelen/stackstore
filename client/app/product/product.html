@@ -1,51 +1,62 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-<div class="container">
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="media">
-        <div class="pull-left">
-          <img class="media-object img-rounded" ng-src="{{product.pictures[0]}}">
 
-          <div class="text-center" ng-show="!currentUser">
-            <!-- <a class="btn btn-block btn-primary" href="/cart/cart.id">Add to Cart</a> -->
-            <button ng-click='addToCart($scope.product)'class="btn btn-block btn-primary">Add To Cart</button>
-             <a class="btn btn-block btn-primary" href="/cart/cart.id">see Cart</a>
+<div class="row">
+  <div class="col-md-2 recomendations">
+    <p class="lead">Recomendations</p>
+    <div class="list-group">
+      <a href="#" class="list-group-item active">ITEMS here</a>
+    </div>
+  </div>
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="media">
+          <div class="pull-left">
+            <img class="media-object img-rounded" ng-src="{{product.pictures[0]}}" height="450" width="350">
+            <div class="text-center" ng-show="!currentUser">
+              <!-- <a class="btn btn-block btn-primary" href="/cart/cart.id">Add to Cart</a> -->
+              <button ng-click='addToCart($scope.product)'class="btn btn-block btn-primary">Add To Cart</button>
+              <a class="btn btn-block btn-primary" href="/cart">see Cart</a>
+            </div>
           </div>
-        </div>
-        <div class="media-body">
-          <h2 class="media-heading">
+          <div class="media-body">
+            <h2 class="media-heading">
             {{product.name}}
-            <span class="pull-right text-danger">{{product.price}}</span>
-          </h2>
-
-          <h5>
+            <span class="pull-right text-danger">${{product.price}}</span>
+            </h2>
+            <h5>
             Status: <span class="text-danger">{{product.isAvailable}}</span>
-          </h5>
-          <h4><i>Description:</i></h4>
-          <p>{{product.description}}</p>
+            </h5>
+            <h4><i>Description:</i></h4>
+            <p>{{product.description}}</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
-<!--   <div class="alert alert-info" >
-    The next episode starts
-  </div> -->
-
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <span class="glyphicon glyphicon-play"></span> Reviews
-    </div>
-    <div class="panel-body">
-      <div>
-        <h4>{{product.review}}
-        </h4>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <span class="glyphicon glyphicon-play"></span> Reviews
+      </div>
+      <div class="panel-body">
         <div>
-          <span class="glyphicon glyphicon-star"></span>
+          <h4>{{product.review}}
+          </h4>
+          <div>
+            <div class="ratings">
+              <p class="pull-right">3 reviews</p>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star-empty"></span>
+              4.0 stars
+              </p>
+            </div>
           </div>
           <!-- {{episode.firstAired | date: 'short'}} -->
-        </p>
-        <p></p>
+          </p>
+          <p></p>
+        </div>
       </div>
     </div>
   </div>
