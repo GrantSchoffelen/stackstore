@@ -10,7 +10,7 @@ angular.module('stackstoreApp')
 
     // $scope.categ = {
     //    status: []
-    //  }; 
+    //  };
     //  console.log("set scope.categ.status to clothes and electronics")
 
 
@@ -27,7 +27,7 @@ angular.module('stackstoreApp')
         description: "add description",
         price: 0,
         isAvailable: true,
-        pictures: [],
+        pictures: ['http://www.pitsimulator.com/arc100.jpg'],
         categories: []
       }
 
@@ -35,7 +35,7 @@ angular.module('stackstoreApp')
         console.log('new product', $scope.newProduct);
         Product.all().success(function(data) {
           $scope.products = data
-            //   console.log("data from db", $scope.products); 
+            //   console.log("data from db", $scope.products);
         });
       })
     }
