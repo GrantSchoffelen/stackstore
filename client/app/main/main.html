@@ -96,7 +96,7 @@
     <h1>Stack Store</h1>
     <form class="search-product-form">
       <p class="input-group">
-      <input type="text" class="form-control" placeholder="search" ng-model="products.name">
+      <input type="text" class="form-control" placeholder="search" ng-model="search.name">
       <span class="input-group-btn">
       <button type="submit" class="btn btn-primary" ng-click="addThing()">Search</button>
       </span>
@@ -121,7 +121,7 @@
 <!-- /.row -->
 <!-- Page Features -->
 <div class=" jumbotron row text-center">
-<div ng-repeat='product in products' class="col-md-3 col-sm-6 hero-feature" >
+<div ng-repeat='product in products | filter:search' class="col-md-3 col-sm-6 hero-feature" >
   <div class="thumbnail hero11">
   <a href="/product/{{product._id}}"><img ng-src='{{product.pictures[0]}}' height="350" width="150" class="img-responsive"></a>
   <div class="caption">
