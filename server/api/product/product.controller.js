@@ -22,6 +22,15 @@ exports.show = function(req, res) {
   });
 };
 
+//search request
+exports.show = function(req, res) {
+  Product.findById(req.params.id, function (err, product) {
+    if(err) { return handleError(res, err); }
+    if(!product) { return res.send(404); }
+    return res.json(product);
+  });
+};
+
 // Creates a new product in the DB.
 exports.create = function(req, res) {
   Product.create(req.body, function(err, product) {

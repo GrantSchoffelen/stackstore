@@ -10,26 +10,26 @@
   </ul>
 </div>
 
-<button ng-click="addCategory(category)">Add Category</button>
+      <div class="label">Themed</div>
+<md-button class="md-accent md-raised" md-theme="cyan" ng-click="addCategory(category)">Add Category</md-button>
 <div class="container">
   <p>Add, edit or delete Category.</p>
   <ul class="list-group">
     <li class="list-group-item" ng-repeat="category in categories">
-   
+
          <a ng-click="deleteCategory(category)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
         <strong editable-text="category.name" onaftersave="updateCategory(category)">{{category.name}}</strong>
-     
+
     </li>
   </ul>
 </div>
 
-
-<button ng-click="addProduct(product)">Add Product</button>
+<md-button class="md-accent md-raised md-hue-3" md-theme="cyan" ng-click="addProduct(product)">Add Product</md-button>
 <div class="container">
   <p>Add, edit or delete products</p>
   <ul class="list-group">
     <li class="list-group-item" ng-repeat="product in products">
-     
+
 
 
 
@@ -39,7 +39,7 @@
 <div ng-show="addProductForm.$visible">Product Categories
       <br><a href="#" editable-checklist="product.categories"  e-name='addProductFor' ng-show="addProductForm.$visible" e-ng-options="category.name for category in categories" > {{showCategories(product)}}</a></div>
 
-    
+
 
 
 
@@ -57,16 +57,16 @@
       </div>
         <div ng-show="addProductForm.$visible">Product Description
         <br><span class="text-muted" editable-text="product.description" ng-show="addProductForm.$visible">{{product.description}}</span></div>
-      
+
 
 
 
         <div ng-show="addProductForm.$visible">is available?
         <br><span class="text-muted" editable-select="product.isAvailable" e-name='addProductForm' ng-show="addProductForm.$visible" e-ng-options="s for s in [true, false]">{{product.isAvailable}}</span></div>
-      
+
         <div ng-show="addProductForm.$visible">Product Pictures
         <br><span class="text-muted" editable-text="product.pictures[0]">{{product.pictures[0]}}</span></div>
-        
+
 <br>
 
 

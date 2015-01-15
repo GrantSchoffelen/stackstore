@@ -6,10 +6,12 @@ angular.module('stackstoreApp', [
   'ngSanitize',
   'btford.socket-io',
   'ui.router',
-  'ui.bootstrap', 
+  'ui.bootstrap',
   'xeditable',
-  'checklist-model'
-  
+  'checklist-model',
+  'ngMaterial'
+
+
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

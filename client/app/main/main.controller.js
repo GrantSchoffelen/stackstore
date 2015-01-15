@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('stackstoreApp')
-    .controller('MainCtrl', function($scope, Product, $http, socket, cartFactory, $cookieStore) {
+
+    .controller('MainCtrl', function($scope, Product, CategoriesService, $http, socket, cartFactory, $cookieStore) {
         // $scope.awesomeThings = [];
         Product.all().success(function(data){
           $scope.products = data
@@ -32,40 +33,49 @@ angular.module('stackstoreApp')
         //     return $scope.products
         //         // console.log(cartData)
         // })
-    $scope.addToCart = function(product) {
-        Product.post(product).then(function(cartData) {
-            console.log(cartData);
-        });
-    }
+        $scope.addToCart = function(product) {
+            Product.post(product).then(function(cartData) {
+                console.log(cartData);
+            });
+        };
+
+        $scope.matchCatWithProds = function(category) {
+            $scope.search = category.name;
+        };
+
+        $scope.searchForCat = function() {
+            CategoriesService.all().success(function(categories) {
+                $scope.categories = categories;
+            });
+        };
+        // $http.get('/api/things').success(function(awesomeThings) {
+        //   $scope.awesomeThings = awesomeThings;
+        //   socket.syncUpdates('thing', $scope.awesomeThings);
+        // });
+
+        // $scope.addThing = function() {
+        //   if($scope.newThing === '') {
+        //     return;
+        //   }
+        //   $http.post('/api/things', { name: $scope.newThing });
+        //   $scope.newThing = '';
+        // };
+
+        // $scope.deleteThing = function(thing) {
+        //   $http.delete('/api/things/' + thing._id);
+        // };
+
+        // $scope.$on('$destroy', function () {
+        //   socket.unsyncUpdates('thing');
+        // });
+
+        // $http.get('/api/produts').success(function(produts){
+        //   $scope.produts = products;
+        // })
+
+        // $scope.findProducts =function($scope) {
+        //   $http.get('/api/produts').success(function(produts){
+        //     $scope.produts = products;
+        //   })
+        // };
     });
-// $http.get('/api/things').success(function(awesomeThings) {
-//   $scope.awesomeThings = awesomeThings;
-//   socket.syncUpdates('thing', $scope.awesomeThings);
-// });
-
-// $scope.addThing = function() {
-//   if($scope.newThing === '') {
-//     return;
-//   }
-//   $http.post('/api/things', { name: $scope.newThing });
-//   $scope.newThing = '';
-// };
-
-// $scope.deleteThing = function(thing) {
-//   $http.delete('/api/things/' + thing._id);
-// };
-
-// $scope.$on('$destroy', function () {
-//   socket.unsyncUpdates('thing');
-// });
-// $scope.products=[{name: 'tv', category: 'electronics', id: 1, price: '$5.99', image: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQjbHkw655U_5QgKiT0Y-uPrtnYxaiBrpWJQGR6XH4elOZq7csdIg'},
-//   {name: 'tv1', category: 'electronics', id: 2, price: '$5.99', image: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQjbHkw655U_5QgKiT0Y-uPrtnYxaiBrpWJQGR6XH4elOZq7csdIg'}]
-// $http.get('/api/produts').success(function(produts){
-//   $scope.produts = products;
-// })
-
-// $scope.findProducts =function($scope) {
-//   $http.get('/api/produts').success(function(produts){
-//     $scope.produts = products;
-//   })
-// };
