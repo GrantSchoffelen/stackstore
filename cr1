@@ -1,0 +1,26 @@
+https://github.com/gschoff/stackstore
+Faisal Nawaz
+Christian Kara
+Grant Schoffelen
+Arcadius Kazimierski
+
+- thing folder still there
+- api subdirectories have inconsistent names (plural/singular)
+- no validations
+- naming of references
+
+
+cart schema
+- why is userId an array? 
+- cart creation date -> creation date. we know its a cart
+- why is picture an array
+- categories is an array, should it be an array of strings? object ids?
+
+order schema
+- what is the relationship between cart and order?
+
+product schema
+- no quantitiy?
+
+review schema
+- 
