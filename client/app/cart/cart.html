@@ -62,25 +62,26 @@
 
           <hr>
           <div class="row" ng-repeat='product in products' >
-            <div class="col-xs-2"><img class="img-responsive" ng-src="{{product.picture[0]}}">
+            <div class="col-xs-2"><img class="img-responsive" ng-src="{{product.pictures[0]}}">
             </div>
             <div class="col-xs-4">
               <h4 class="product-name"><strong>{{product.name}}</strong></h4><h4><small>{{product.isActive}}</small></h4>
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-6"
               <div class="col-xs-6 text-right">
-                <h6><strong>{{product.lineItems.purchasePrice | currency}}<span class="text-muted">x</span></strong></h6>
+                <h6><strong>{{product.price | currency}}<span class="text-muted">x</span></strong></h6>
               </div>
-              <div class="col-xs-4">
-                <input type="text" class="form-control input-sm" value="{{product.lineItems.quantity}}">
-              </div>
+             <!--  <div ng-repeat= 'line in cartLineItems' class="col-xs-4">
+                <input type="text"  class="form-control input-sm" value="{{line.quantity}}">
+              </div> -->
               <div class="col-xs-2">
-                <button ng-click='deleteFromCart(product)' type="button" class="btn btn-link btn-xs">
+                <button ng-click='deleteFilteredItem(product._id, cartLineItems)' type="button" class="btn btn-link btn-xs">
                   <span class="glyphicon glyphicon-trash"></span>
                 </button>
               </div>
             </div>
           </div>
+
           <hr>
           <div class="row">
             <div class="text-center">
@@ -116,7 +117,12 @@
     </div>
   </div>
 </div>
+Products
 {{products}}
+
+<br><br><br><br><br><br><br>
+cart line items
+{{cartLineItems}}
 
 
 
