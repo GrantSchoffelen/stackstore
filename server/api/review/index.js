@@ -5,6 +5,9 @@ var controller = require('./review.controller');
 
 var router = express.Router();
 
+// this whole router should probably be mounted 
+// under the product router
+
 router.get('/', controller.index);
 router.get('/:id', controller.show);
 router.post('/', controller.create);
