@@ -139,7 +139,7 @@ description: "The complete set of Star Wars movies in Blu-ray loaded with specia
 price: 89.96,
 isAvailable: true,
 pictures: ["http://ecx.images-amazon.com/images/I/81oef51MNOL._SL1500_.jpg"],
-category:['movies']
+categories:['movies']
 },
 
 
@@ -149,7 +149,7 @@ description: "Deluxe 15-Disc Set Includes 9 Special Features DVDs with over 26 H
 price: 49.99,
 isAvailable: true,
 pictures: ['http://www.filmchronicles.com/wp-content/uploads/2011/05/lotrBLUbig.jpg'],
-category:['movies']
+categories:['movies']
 },
 
 
@@ -159,7 +159,7 @@ description: "TRUE LOVE: THE PRINCESS BRIDE PHENOMENON (Pts. 1 & 2) For 25 years
 price: 9.96,
 isAvailable: true,
 pictures: ['http://www.redefinedmom.com/wp-content/uploads/2013/12/Screen-Shot-2013-12-27-at-8.29.12-AM.png'],
-category:['movies']
+categories:['movies']
 },
 
 
@@ -169,7 +169,7 @@ description: "A young man is a reformed gambler who must return to playing big s
 price: 7.88,
 isAvailable: true,
 pictures: ["http://wpc.556e.edgecastcdn.net/80556E/img.product/DVDE0HFGsVtfHG_1_l.jpg"],
-category:['movies']
+categories:['movies']
 },
 
 
@@ -179,7 +179,7 @@ description: "The futuristic tale unfolds in a Great Britain that's a fascist st
 price: 9.96,
 isAvailable: true,
 pictures: ['http://images.static-bluray.com/movies/covers/76574_medium.jpg'],
-category:['movies', 'electronics']
+categories:['movies', 'electronics']
 }
 
 
@@ -190,6 +190,8 @@ category:['movies', 'electronics']
 
 Category.find({}).remove(function() {
   Category.create({
+    name : "all"
+  }, {
     name : 'kitchenware'
   }, {
     name : 'entertainment'
@@ -242,7 +244,7 @@ User.find({}).remove(function() {
     email: 'admin@admin.com',
     password: 'admin'
   }, function() {
-      console.log('finished populating users');
+     // console.log('finished populating users');
     }
   );
 });
