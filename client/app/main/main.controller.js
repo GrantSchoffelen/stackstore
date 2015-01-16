@@ -33,20 +33,35 @@ angular.module('stackstoreApp')
         //     return $scope.products
         //         // console.log(cartData)
         // })
-        $scope.addToCart = function(product) {
-            Product.post(product).then(function(cartData) {
-                console.log(cartData);
-            });
-          $mdToast.show(
-          $mdToast.simple()
-          .content("added to cart :)")
-          .position('top right')
-          .hideDelay(1000)
-          );
-        };
+
+        // $scope.addToCart = function(product) {
+        //     Product.post(product).then(function(cartData) {
+        //         console.log(cartData);
+        //     });
+        //   $mdToast.show(
+        //   $mdToast.simple()
+        //   .content("added to cart :)")
+        //   .position('top right')
+        //   .hideDelay(1000)
+        //   );
+        // };
+
+$scope.quantity = 1;
+    $scope.addToCart = function(product, quantity) {
+        Product.addCart(product, $scope.quantity).then(function(cartData) {
+            console.log(cartData);
+        });
+    }
+
+        // $scope.addToCart = function(product) {
+        //     Product.post(product).then(function(cartData) {
+        //         console.log(cartData);
+        //     });
+        // };
+
 
         $scope.matchCatWithProds = function(category) {
-            $scope.search = category.name;
+            $scope.search = category.name.toString();
         };
 
         $scope.searchForCat = function() {
@@ -84,4 +99,5 @@ angular.module('stackstoreApp')
         //     $scope.produts = products;
         //   })
         // };
+
     });

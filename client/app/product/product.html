@@ -1,8 +1,9 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-
 <div class="row">
   <div class="col-md-2 recomendations">
     <p class="lead">Recomendations</p>
+    <div>is available?
+       </div>
     <div class="list-group">
       <a href="#" class="list-group-item active">ITEMS here</a>
     </div>
@@ -11,12 +12,16 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="media">
-          <div class="pull-left">
+          <div class="pull-left row">
             <img class="media-object img-rounded" ng-src="{{product.pictures[0]}}" height="450" width="350">
-            <div class="text-center" ng-show="!currentUser">
+            <div class="text-center row" ng-show="!currentUser">
               <!-- <a class="btn btn-block btn-primary" href="/cart/cart.id">Add to Cart</a> -->
-              <button ng-click='addToCart($scope.product)'class="btn btn-block btn-primary">Add To Cart</button>
-              <a class="btn btn-block btn-primary" href="/cart">see Cart</a>
+              <button ng-click='addToCart($scope.product)'class="btn btn-block btn-primary">Add To Cart</button>Quantity
+               <span  editable-select="quantity" e-name='quantity'  e-ng-options="s for s in [1, 2, 3, 4, 5]">{{quantity}}</span>
+
+               
+            
+              <a class="btn btn-block btn-primary" href="/cart/{{cartId}}">see Cart</a>
             </div>
           </div>
           <div class="media-body">
@@ -29,6 +34,7 @@
             </h5>
             <h4><i>Description:</i></h4>
             <p>{{product.description}}</p>
+             
           </div>
         </div>
       </div>
@@ -61,3 +67,4 @@
     </div>
   </div>
 </div>
+

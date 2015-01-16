@@ -4,7 +4,7 @@ angular.module('stackstoreApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('cart', {
-        url: '/cart',
+        url: '/cart/:id',
         templateUrl: 'app/cart/cart.html',
         controller: 'CartCtrl'
       })
