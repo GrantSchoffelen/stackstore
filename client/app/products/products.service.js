@@ -94,9 +94,14 @@ angular.module('stackstoreApp')
                 // the promise way
                 var deferred = $q.defer();
 
-                $http.get('/api/product/' + id).success(function(product) {
-                    deferred.resolve(product);
-                });
+                $http.get('/api/product/' + id)
+                    .success(function(product) {
+                        deferred.resolve(product);
+                    })
+                    .error(function(err) {
+                        
+                        deferred.reject("error string");
+                    });
 
                 return deferred.promise
             },
@@ -109,15 +114,29 @@ angular.module('stackstoreApp')
                 });
             },
             products: [],
-            takeout: function(product) {
-                return $http.delete('/api/carts/' + product._id).then(function(data) {
-                    console.log(data)
+            takeout: function(products, cartId) {
+                
+                 return $http.get('/api/carts/' + cartId).success(function(data){
+                    var returnCart = data
+                    returnCart.lineItems.splice(newLineItem)
+                    $http.put('/api/carts/' + cartid).then(function(data) {
+                    console.log('deleted', data)
+                });
                 });
             },
-            updateCart: function(product) {
-                    return $http.put('/api/carts/' + cart_id + "/" + product._id).then(function(data) {
-                        console.log(data)
-                    });
+
+
+
+            updateCart: function(id, update) {
+               return   $http.get('/api/carts/' + id).success(function(data){
+                    var returnCart = data
+                    console.log(returnCart)
+
+                    returnCart.lineItems = update
+                    $http.put('/api/carts/' + id, returnCart).then(function(data) {
+                    
+                });
+                })
                 }
                 // cart: function(callback){
                 //     $http.get('/api/carts').success(callback)
