@@ -2,13 +2,13 @@
 
 angular.module('stackstoreApp')
 
-    .controller('MainCtrl', function($scope, Product, CategoriesService, $http, socket, cartFactory, $cookieStore) {
+    .controller('MainCtrl', function($scope, Product, CategoriesService, $http, socket, cartFactory, $cookieStore,
+      $mdToast, $animate) {
         // $scope.awesomeThings = [];
         Product.all().success(function(data){
           $scope.products = data
           // return $scope.products
         });
-
 
         var cart = $cookieStore.get('cart') || {};
 
@@ -37,6 +37,12 @@ angular.module('stackstoreApp')
             Product.post(product).then(function(cartData) {
                 console.log(cartData);
             });
+          $mdToast.show(
+          $mdToast.simple()
+          .content("added to cart :)")
+          .position('top right')
+          .hideDelay(1000)
+          );
         };
 
         $scope.matchCatWithProds = function(category) {

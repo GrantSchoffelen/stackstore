@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('stackstoreApp')
-  .controller('AdminCtrl', function($scope, $http, Auth, User, Product, CategoriesService, $filter) {
+  .controller('AdminCtrl', function($scope, $http, Auth, User, Product, CategoriesService, $filter, $mdToast, $animate) {
     // Use the User $resource to fetch all users
     $scope.users = User.query();
     Product.all().success(function(data) {
@@ -57,10 +57,35 @@ angular.module('stackstoreApp')
 
 
     $scope.update = function(prod) {
+      //  angular.forEach($scope.products,function (oneProduct) {
+      //   if (prod.name !== oneProduct.name)
+      //     console.log('there is no problem here')
+      // }
+      console.log('name of prod', prod.name)
+      console.log('name of prodcut', $scope.products[0].name)
+      var nameNoGood = false;
+      for (var i = 0; i < $scope.products.length; i++) {
+        if ($scope.products[i].name === prod.name){
+          nameNoGood = true;
+        }
+      };
+
+
       console.log('before updateeeeeeeeeeeeeeeeeeeeee', prod)
-      $http.put('/api/product/' + prod._id, prod).success(function(productsFromDb) {
-        console.log('updated product', productsFromDb);
-      })
+      if (nameNoGood == false) {
+        $http.put('/api/product/' + prod._id, prod).success(function(productsFromDb) {
+          console.log('updated product', productsFromDb);
+        })
+       }
+       else{
+        $mdToast.show(
+          $mdToast.simple()
+          .content("added to cart :)")
+          .position('top right')
+          .hideDelay(1000)
+          );
+        alert("you already have a product with the same!");
+       }
     }
 
 
