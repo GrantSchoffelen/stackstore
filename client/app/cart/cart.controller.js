@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('stackstoreApp')
-  .controller('CartCtrl', function($scope, Product, $http, $stateParams, $q, cartFactory) {
+  .controller('CartCtrl', function($scope, $window, Product, $http, $stateParams, $q, cartFactory, Auth, $location) {
     // $scope.message = 'Hello';
     //$scope.products = Product.cart();
 
@@ -20,20 +20,20 @@ angular.module('stackstoreApp')
 
       // cartFactory.getCart().then(function(data){
 
-      // for (var i = 0; i <=  $scope.cartLineItems.length - 1; i++) {
-      //   //console.log('productsL ',  $scope.cartLineItems[i].shipping)
-      //   $scope.totalShipping +=  $scope.cartLineItems[i].shipping;
-      //   console.log()
-      // };
-      // for (var t = 0; t <=  $scope.cartLineItems.length - 1; t++) {
-      //   $scope.totalCost +=  $scope.cartLineItems[t].shipping;
-      //   $scope.totalCost +=  $scope.cartLineItems[t].tax;
-      //   $scope.totalCost +=  $scope.cartLineItems[t].purchasePrice;
-      // }
-      // for (var z = 0; z <=  $scope.cartLineItems.length - 1; z++) {
-      //   //console.log('productsL ',  $scope.cartLineItems[i].shipping)
-      //   $scope.totalTax +=  $scope.cartLineItems[z].tax;
-      // };
+      for (var i = 0; i <=  $scope.cartLineItems.length - 1; i++) {
+        //console.log('productsL ',  $scope.cartLineItems[i].shipping)
+        $scope.totalShipping +=  $scope.cartLineItems[i].shipping;
+        console.log()
+      };
+      for (var t = 0; t <=  $scope.cartLineItems.length - 1; t++) {
+        $scope.totalCost +=  $scope.cartLineItems[t].shipping;
+        $scope.totalCost +=  $scope.cartLineItems[t].tax;
+        $scope.totalCost +=  $scope.cartLineItems[t].purchasePrice;
+      }
+      for (var z = 0; z <=  $scope.cartLineItems.length - 1; z++) {
+        //console.log('productsL ',  $scope.cartLineItems[i].shipping)
+        $scope.totalTax +=  $scope.cartLineItems[z].tax;
+      };
 
     });
 }
@@ -104,6 +104,23 @@ $scope.deleteFilteredItem = function(hashKey, sourceArray){
     };
   })
 }
+
+//checkout process begins here
+
+  $scope.isCollapsed = true;
+    $scope.isLoggedIn = Auth.isLoggedIn;
+
+    $scope.isAdmin = Auth.isAdmin;
+    $scope.getCurrentUser = Auth.getCurrentUser;
+
+    $scope.ifLoggedIn = function (check) {
+      if (check){
+        $window.location.href = '/checkout/'+ $stateParams.id;
+      }
+      else {
+        $window.location.href = '/signup';
+      }
+    }
 
       // setTimeout(function() {
       //   console.log('more products: ', $scope.products)

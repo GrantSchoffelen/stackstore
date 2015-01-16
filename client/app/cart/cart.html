@@ -107,9 +107,10 @@
               <h4 class="text-right">Total <strong>{{totalCost | currency}}</strong></h4>
             </div>
             <div class="col-xs-3">
-              <button type="button" class="btn btn-success btn-block">
+              
+              <button type="button" ng-click="ifLoggedIn(isLoggedIn())" ng-class="{active: isActive('/signup')}" class="btn btn-success btn-block">
                 Checkout
-              </button>
+              </button> 
             </div>
           </div>
         </div>
@@ -117,12 +118,8 @@
     </div>
   </div>
 </div>
-Products
-{{products}}
 
-<br><br><br><br><br><br><br>
-cart line items
-{{cartLineItems}}
+
 
 
 
