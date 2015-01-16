@@ -212,7 +212,7 @@ p.copyright {
   height: 450px;
   width: 254px;
 }
-@media(min-width:700px) {
+
 .mainAddCart {
   position: absolute;
   bottom: 43px;
@@ -223,7 +223,12 @@ p.copyright {
   bottom: 43px;
   right: 30px;
 }
+.jumbotron p {
+  margin-bottom: 15px;
+  font-size: 15px;
+  font-weight: 200;
 }
+
 
 
 
