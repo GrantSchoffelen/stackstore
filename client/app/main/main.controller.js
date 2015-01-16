@@ -33,6 +33,13 @@ angular.module('stackstoreApp')
         //     return $scope.products
         //         // console.log(cartData)
         // })
+<<<<<<< HEAD
+    $scope.addToCart = function(product) {
+        Product.addCart(product).then(function(cartData) {
+            console.log(cartData);
+        });
+    }
+=======
         $scope.addToCart = function(product) {
             Product.post(product).then(function(cartData) {
                 console.log(cartData);
@@ -78,4 +85,5 @@ angular.module('stackstoreApp')
         //     $scope.produts = products;
         //   })
         // };
+>>>>>>> master
     });

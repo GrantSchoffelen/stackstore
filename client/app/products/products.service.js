@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('stackstoreApp')
-    .factory('Product', function($http, $q) {
+    .factory('Product', function($http, $q, $cookieStore) {
+
+
 
         // var methods = {
         //   method1: function(){},
@@ -17,28 +19,65 @@ angular.module('stackstoreApp')
                     return products;
                 });
             },
-            post: function(product) {
-                console.log(product, 'producttttttttttttttttttttttt')
-                var cart = {
-                    Date: Date,
-                    isActive: true,
-                    lineItems: {
-                        quantity: 1,
+            addCart: function(product, quantity) {
+                console.log("<--product", product._id)
+
+                var newLineItem = {
+                        quantity: quantity,
                         productId: product._id,
-                        purchasePrice: product.price,
-                        tax: (product.price * 0.08),
+                        purchasePrice: product.price*quantity,
+                        tax: (product.price * 0.08)*quantity,
                         shipping: (product.price * 0.15),
                         name: product.name,
                         picture: product.pictures,
                         categories: product.categories,
-                    }
-                };
-                console.log("sgsfgs", cart)
-                return $http.post('/api/carts', cart).then(function(response) {
-                    console.log(response)
-                    return response.data;
-                    // body...
+                }
+
+                var cartId = $cookieStore.get('cart')._id;
+                console.log(cartId, 'cart idddddddddd')
+               return $http.get('/api/carts/' + cartId).success(function(data){
+                    var returnCart = data
+                    console.log(returnCart, 'return carttttttttttttttttt')
+                    returnCart.lineItems.push(newLineItem)
+                    $http.put('api/carts/'+ returnCart._id, returnCart).then(function(data) {
+                        console.log(data.data, 'data.data')
+                        console.log(data, 'dataaaaaaaaaaaaaaaaaa')
+
+                    })
+
                 })
+
+                
+               
+
+            
+
+                // console.log($cookieStore.get('cart'), '<-----cookie data')
+                // console.log(cart, "<-----cart")
+
+            //cart.lineItems.push(product)
+                // $http.get('/api/carts/' + cart._id).success(function(product) {
+                //     deferred.resolve(product);
+                // // var cart = {
+                //     Date: Date,
+                //     isActive: true,
+                //     lineItems: {
+                //         quantity: 1,
+                //         productId: product._id,
+                //         purchasePrice: product.price,
+                //         tax: (product.price * 0.08),
+                //         shipping: (product.price * 0.15),
+                //         name: product.name,
+                //         picture: product.pictures,
+                //         categories: product.categories,
+                //     }
+                // };
+                // console.log("sgsfgs", cart)
+                // return $http.post('/api/carts', cart).then(function(response) {
+                //     console.log(response)
+                //     return response.data;
+                //     // body...
+                // })
             },
             get: function(id) {
                 // var data;
