@@ -138,10 +138,11 @@
   <a href="/product/{{product._id}}"><img ng-src='{{product.pictures[0]}}' height="350" width="150" class="img-responsive"></a>
   <div class="caption">
     <h3>{{product.name}}</h3>
-    <p>{{product.description | limitTo: 10}}...</p>
+    <p>{{product.description | limitTo: 90}}...</p>
     <p>
-     <md-button  ng-click='addToCart(product)' class="md-raised md-primary">Buy Now!</md-button>
-    <a href="/product/{{product._id}}" class="btn btn-default">More Info</a>
+
+     <md-button  ng-click='addToCart(product)' class="md-raised md-primary mainAddCart">Buy Now!</md-button>
+    <a href="/product/{{product._id}}" class=" moreInfo btn btn-default">More Info</a>
 
     </p>
   </div>
@@ -149,18 +150,6 @@
 </div>
 </div>
 <!-- /.row -->
-<!-- start of material-ui -->
-<md-card class="animate yourscore" layout="column" style="background-color:#F5F5F5; padding-left:5px; padding-right:5px; width:550px;" ng-show="showDetails">
-<div class="caption">
-<h3>{{product.name}}</h3>
-<p>{{product.description | limitTo: 98}}...</p>
-<p>
-</md-card>
-<hr>
-
-
-
-
  <!--      start of Footer -->
 <footer>
 <div class="container">

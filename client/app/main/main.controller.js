@@ -2,13 +2,13 @@
 
 angular.module('stackstoreApp')
 
-    .controller('MainCtrl', function($scope, Product, CategoriesService, $http, socket, cartFactory, $cookieStore) {
+    .controller('MainCtrl', function($scope, Product, CategoriesService, $http, socket, cartFactory, $cookieStore,
+      $mdToast, $animate) {
         // $scope.awesomeThings = [];
         Product.all().success(function(data){
           $scope.products = data
           // return $scope.products
         });
-
 
         var cart = $cookieStore.get('cart') || {};
 
@@ -33,7 +33,20 @@ angular.module('stackstoreApp')
         //     return $scope.products
         //         // console.log(cartData)
         // })
-$scope.quantity = 1; 
+
+        // $scope.addToCart = function(product) {
+        //     Product.post(product).then(function(cartData) {
+        //         console.log(cartData);
+        //     });
+        //   $mdToast.show(
+        //   $mdToast.simple()
+        //   .content("added to cart :)")
+        //   .position('top right')
+        //   .hideDelay(1000)
+        //   );
+        // };
+
+$scope.quantity = 1;
     $scope.addToCart = function(product, quantity) {
         Product.addCart(product, $scope.quantity).then(function(cartData) {
             console.log(cartData);
@@ -45,6 +58,7 @@ $scope.quantity = 1;
         //         console.log(cartData);
         //     });
         // };
+
 
         $scope.matchCatWithProds = function(category) {
             $scope.search = category.name.toString();
