@@ -37,14 +37,13 @@ angular.module('stackstoreApp')
                 console.log(cartId, 'cart idddddddddd')
                return $http.get('/api/carts/' + cartId).success(function(data){
                     var returnCart = data
-                    console.log(returnCart, 'return carttttttttttttttttt')
                     returnCart.lineItems.push(newLineItem)
                     $http.put('api/carts/'+ returnCart._id, returnCart).then(function(data) {
                         console.log(data.data, 'data.data')
                         console.log(data, 'dataaaaaaaaaaaaaaaaaa')
 
                     })
-
+                        
                 })
 
                 

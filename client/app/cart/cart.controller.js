@@ -1,15 +1,21 @@
 'use strict';
 
 angular.module('stackstoreApp')
-  .controller('CartCtrl', function ($scope, Product, $http) {
+  .controller('CartCtrl', function ($scope, Product, $http, $stateParams, cartFactory) {
     // $scope.message = 'Hello';
     //$scope.products = Product.cart();
-    Product.cart().then(function(data){
-      $scope.products = data;
-      Product.products = data;
-      console.log('data', data)
+  cartFactory.getCart($stateParams.id).then(function(data) {
+    console.log('cardid this is the data lines items', data.lineItems)
+      // $scope.cart = data;
+       $scope.products= data.lineItems
+       console.log( $scope.products);
+    });
 
-    })
+    // Product.cart().then(function(data){
+    //   $scope.products = data;
+    //   Product.products = data;
+
+    // })
 
     $scope.deleteFromCart = function(product) {
 

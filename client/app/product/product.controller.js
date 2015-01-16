@@ -16,12 +16,13 @@ angular.module('stackstoreApp')
 
 
   })
-  .controller('ProductDetailCtrl', function ($scope, Product, $http, $stateParams) {
+  .controller('ProductDetailCtrl', function ($scope, Product, $http, $stateParams, $cookieStore) {
     // async way
     // Product.get($stateParams.id, function(product) {
     //   $scope.product = product;
     // });
 $scope.quantity = 1; 
+$scope.cartId = $cookieStore.get('cart')._id;
     // promise way
     Product.get($stateParams.id).then(function(data) {
       $scope.product = data;
@@ -39,7 +40,7 @@ $scope.quantity = 1;
             
         });
     }
-
+ 
 
      // $scope.addToCart= function($stateParams){
      //    $http.post('/api/cart').success(function () {
