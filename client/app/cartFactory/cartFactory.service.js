@@ -28,7 +28,14 @@ angular.module('stackstoreApp')
                     deferred.resolve(product);
                 })
         }
-      },
+      }, 
+        getCart: function(cartId){
+          var deferred = $q.defer();
+          $http.get('/api/carts/' +cartId).success(function(cart){
+            deferred.resolve(cart)
+          }); 
+        return deferred.promise
+      }
 
 
 

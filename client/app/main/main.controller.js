@@ -47,7 +47,7 @@ $scope.quantity = 1;
         // };
 
         $scope.matchCatWithProds = function(category) {
-            $scope.search = category.name;
+            $scope.search = category.name.toString();
         };
 
         $scope.searchForCat = function() {
