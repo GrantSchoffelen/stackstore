@@ -7,14 +7,17 @@ angular.module('stackstoreApp')
 
     var meaningOfLife = 42;
 
+
     // Public API here
     return {
-      findUsersCart: function(cart) {
+     
+      findUsersCart: function(cart, userId) {
+        
         if(!cart._id){
           var cart = {
-            userId: null, // null or undefined if user not logged in
-            cartCreationDate: Date,
-            isActive: Boolean,
+            user: userId || null, // null or undefined if user not logged in
+            creationDate: Date,
+            status: 'activeShopping',
             lineItems: []
           }; 
           console.log("i am running post")
@@ -24,9 +27,16 @@ angular.module('stackstoreApp')
 
           console.log("i am running get what")
         var deferred = $q.defer();
-        return $http.get('/api/carts/' + cart._id).success(function(product) {
-                    deferred.resolve(product);
+        return $http.get('/api/carts/' + cart._id).success(function(cart) {
+                    deferred.resolve(cart);
+                    var updatedCart = cart
+                    if(updatedCart.user === null){
+                      updatedCart.user = userId;
+                    }
+                $http.put('/api/carts/' + cart._id, updatedCart)    
+                  console.log(updatedCart, "this is")
                 })
+
         }
       }, 
         getCart: function(cartId){

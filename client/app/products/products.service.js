@@ -25,12 +25,11 @@ angular.module('stackstoreApp')
                 var newLineItem = {
                         quantity: quantity,
                         productId: product._id,
-                        purchasePrice: product.price*quantity,
-                        tax: (product.price * 0.08)*quantity,
+                        purchasePrice: product.price,
+                        totalPrice: product.price * quantity, 
+                        tax: (product.price * 0.08),
                         shipping: (product.price * 0.15),
-                        name: product.name,
-                        picture: product.pictures,
-                        categories: product.categories,
+                        name: product.name
                 }
 
                 var cartId = $cookieStore.get('cart')._id;

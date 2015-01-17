@@ -3,22 +3,25 @@
 angular.module('stackstoreApp')
 
     .controller('MainCtrl', function($scope, Product, CategoriesService, $http, socket, cartFactory, $cookieStore,
-      $mdToast, $animate) {
+      $mdToast, $animate, Auth) {
         // $scope.awesomeThings = [];
+          
+
         Product.all().success(function(data){
           $scope.products = data
           // return $scope.products
         });
 
         var cart = $cookieStore.get('cart') || {};
-
+      var userId = Auth.getCurrentUser()._id;
+      console.log(userId, 'userrrrrrrrrrrrrrrrrrrrrrrrrrrr id')
 
         // A unlogged user, goes into the site, and create a cart
-        cartFactory.findUsersCart(cart).success(function(cartData) {
+        cartFactory.findUsersCart(cart, userId).success(function(cartData) {
             $cookieStore.put('cart', cartData);
-            console.log(cartData, 'cart dataaaaaaaaaaaaaaaaaaaaaaaaaaa')
             $scope.cart = cartData;
-            console.log($scope.cart)
+            
+            
         });
 
 
