@@ -1,11 +1,14 @@
 'use strict';
 
 angular.module('stackstoreApp')
-  .controller('NavbarCtrl', function ($scope, $location, Auth) {
+  .controller('NavbarCtrl', function ($scope, $location, Auth, $cookieStore) {
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
     }];
+
+    $scope.cart = $cookieStore.get('cart') || {};
+    
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
