@@ -5,7 +5,7 @@ angular.module('stackstoreApp')
     .controller('MainCtrl', function($scope, Product, CategoriesService, $http, socket, cartFactory, $cookieStore,
       $mdToast, $animate, Auth) {
         // $scope.awesomeThings = [];
-          
+
 
         Product.all().success(function(data){
           $scope.products = data
@@ -20,8 +20,8 @@ angular.module('stackstoreApp')
         cartFactory.findUsersCart(cart, userId).success(function(cartData) {
             $cookieStore.put('cart', cartData);
             $scope.cart = cartData;
-            
-            
+
+
         });
 
 
@@ -49,7 +49,7 @@ angular.module('stackstoreApp')
         //   );
         // };
 
-$scope.quantity = 1;
+      $scope.quantity = 1;
     $scope.addToCart = function(product, quantity) {
         Product.addCart(product, $scope.quantity).then(function(cartData) {
             console.log(cartData);

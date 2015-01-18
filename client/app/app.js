@@ -9,9 +9,8 @@ angular.module('stackstoreApp', [
   'ui.bootstrap',
   'xeditable',
   'checklist-model',
-  'ngMaterial', 
-  'stripe', 
-  'angularPayments'
+  'ngMaterial',
+  'stripe'
 
 
 ])
