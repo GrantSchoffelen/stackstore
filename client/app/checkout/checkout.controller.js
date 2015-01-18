@@ -25,5 +25,18 @@ angular.module('stackstoreApp')
                $scope.finalPrice()
 
                 })
+
+
+
+ $scope.handleStripe = function(status, response){
+  console.log(status)
+  
+        if(response.error) {
+          console.log('response error getting hit', response.error)
+        } else {
+          console.log(response)
+          var token = response.id
+        }
+      }
     
   });
