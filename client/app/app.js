@@ -9,7 +9,9 @@ angular.module('stackstoreApp', [
   'ui.bootstrap',
   'xeditable',
   'checklist-model',
-  'ngMaterial'
+  'ngMaterial', 
+  'stripe', 
+  'angularPayments'
 
 
 ])
@@ -19,6 +21,7 @@ angular.module('stackstoreApp', [
 
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
+    Stripe.setPublishableKey('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
   })
 
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
