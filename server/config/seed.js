@@ -10,7 +10,30 @@ var User = require('../api/user/user.model');
 var Product = require('../api/product/product.model');
 var Category = require('../api/categories/categories.model');
 var Order = require('../api/orders/orders.model');
+var Review = require('../api/review/review.model');
 // var Cart = require('../api/cart/cart.model');
+
+
+
+Review.find({}).remove(function() {
+  Review.create({
+    var ReviewSchema = new Schema({
+      _user: {type: Schema.Types.ObjectId, ref: 'user'}, 
+      _prod: {type: Schema.Types.ObjectId, ref: 'product'},
+      date: Date,
+      text: "First review",
+      rating: 5
+    });
+  }, {
+    var ReviewSchema = new Schema({
+      _user: {type: Schema.Types.ObjectId, ref: 'user'}, 
+      _prod: {type: Schema.Types.ObjectId, ref: 'product'},
+      date: Date,
+      text: "Second review",
+      rating: 3
+    });
+  })
+});
 
 
 Order.find({}).remove(function() {

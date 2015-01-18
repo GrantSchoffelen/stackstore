@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('stackstoreApp')
-    .controller('AdminCtrl', function($scope, $http, Auth, User, Product, CategoriesService, $filter, $mdToast, $animate) {
+    .controller('AdminCtrl', function(Category, $scope, $http, Auth, User, Product, CategoriesService, $filter, $mdToast, $animate) {
         // Use the User $resource to fetch all users
         $scope.users = User.query();
         Product.all().success(function(data) {
@@ -51,15 +51,18 @@ angular.module('stackstoreApp')
 
 
         $scope.addCategory = function() {
-            $scope.newCategory = {
-                name: "New Category"
-            }
-            $http.post('/api/categoriess/', $scope.newCategory).success(function(categoriesFromDb) {
-                console.log('new category', $scope.newCategory);
-                CategoriesService.all().success(function(data) {
-                    $scope.categories = data
-                });
-            })
+            // $scope.newCategory = {
+            //     name: "New Category"
+            // }
+            // $http.post('/api/categoriess/', $scope.newCategory).success(function(categoriesFromDb) {
+            //     console.log('new category', $scope.newCategory);
+            //     CategoriesService.all().success(function(data) {
+            //         $scope.categories = data
+            //     });
+            // })
+
+            var newCat = new Category("my_category");
+            newCat.save();
         }
 
 

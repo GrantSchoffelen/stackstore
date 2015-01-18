@@ -17,6 +17,33 @@ angular.module('stackstoreApp')
 
   })
   .controller('ProductDetailCtrl', function ($scope, Product, $http, $stateParams, $cookieStore) {
+  
+$scope.newReview = {
+  _user: {type: Schema.Types.ObjectId, ref: 'user'}, 
+  _prod: {type: Schema.Types.ObjectId, ref: 'product'},
+  date: Date,
+  text: String,
+  rating: Number
+};
+
+
+
+
+// Helper function for $http.post update databse with information
+    $scope.update = function() {
+      $http.post('api/review', $scope.reviews).success(function(data) {
+        console.log("Update to database Complete")
+      });
+    }
+
+
+
+
+
+
+
+
+
     // async way
     // Product.get($stateParams.id, function(product) {
     //   $scope.product = product;

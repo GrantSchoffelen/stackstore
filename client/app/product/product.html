@@ -30,7 +30,8 @@
             <span class="pull-right text-danger">${{product.price}}</span>
             </h2>
             <h5>
-            Status: <span class="text-danger">{{product.isAvailable}}</span>
+            Status: <span
+             class="text-danger">{{product.isAvailable}}</span>
             </h5>
             <h4><i>Description:</i></h4>
             <p>{{product.description}}</p>
@@ -39,8 +40,56 @@
         </div>
       </div>
     </div>
-    <div class="panel panel-default">
+  
+      
+
+
+
+<div class="col-md-8" id="abilities">
+        <ul class="no-bullets">
+          <div class="editTitles" ng-show="textBtnFormSkill.$visible">Skill Name</div>
+          <li class= 'menu-left'>
+            <span class="ability-title" editable-text="skill.skill.name">{{skill.skill.name}}</span>
+            <div class="editTitles" ng-show="textBtnFormSkill.$visible">Skill Level</div>
+            <span editable-select="skill.skill.level" e-name="textBtnFormSkill" e-ng-options="stars for stars in [5,4,3,2,1]">
+            </span>
+            <span class="ability-score">
+
+            <span class="glyphicon glyphicon-star filled" ng-repeat="i in getNumber(skill.skill.level) track by $index" ng-hide="textBtnFormSkill.$visible"></span>
+  
+            </span>
+          </li>
+          <!--  <strong editable-text = "skill.skill.level">{{skill.skill}}</strong> -->
+        </ul>
+        <div class = "row">
+          <ul>
+            <center>
+            <span ng-show="textBtnFormSkill.$visible">
+            <md-button type="submit" class="md-raised md-primary glyphicon glyphicon-saved" ng-disabled="textBtnFormSkill.$waiting">
+            Save
+            </md-button>
+            <md-button type="button" class="md-raised glyphicon glyphicon-remove-sign" ng-disabled="textBtnFormSkill.$waiting" ng-click="textBtnFormSkill.$cancel()">
+            Cancel
+            </md-button>
+            </span>
+            <md-button class="md-raised md-warn glyphicon glyphicon-trash" ng-click="deleteFilteredItem(skill.$$hashKey, profileInformation.linkedin.skills.values)" ng-show="textBtnFormSkill.$visible"> Delete</md-button>
+          </center>
+          </ul>
+          </div>
+      </div>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+  <div class="panel panel-default">
       <div class="panel-heading">
+
+
         <span class="glyphicon glyphicon-play"></span> Reviews
       </div>
       <div class="panel-body">
