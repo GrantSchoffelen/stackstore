@@ -15,9 +15,7 @@ var ProductSchema = new Schema({
 
 
 ProductSchema
-
 .pre('save', function(next){
-	console.log('this',this)
 	this.categories.push("all")
 	next();
 })
