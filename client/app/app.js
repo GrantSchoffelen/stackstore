@@ -1,16 +1,19 @@
 'use strict';
 
 angular.module('stackstoreApp', [
-    'ngCookies',
-    'ngResource',
-    'ngSanitize',
-    'btford.socket-io',
-    'ui.router',
-    'ui.bootstrap',
-    'xeditable',
-    'checklist-model',
-    'ngMaterial',
-    'stripe'
+
+  'ngCookies',
+  'ngResource',
+  'ngSanitize',
+  'btford.socket-io',
+  'ui.router',
+  'ui.bootstrap',
+  'xeditable',
+  'checklist-model',
+  'ngMaterial',
+  'stripe', 
+  'angularPayments'
+
 
 
 ])

@@ -1,9 +1,13 @@
 'use strict';
 
 angular.module('stackstoreApp')
-    .controller('CheckoutCtrl', function($scope, $stateParams, $http, $q) {
-        $http.get('/api/carts/' + $stateParams.id).success(function(data) {
-            $scope.order = data
+
+  .controller('CheckoutCtrl', function ($scope, $stateParams, $http, $q, $cookieStore) {
+  	$http.get('/api/carts/' + $stateParams.id).success(function(data){
+  
+                   $scope.order = data
+                  
+
 
 
             $scope.finalPrice = function() {
@@ -28,15 +32,37 @@ angular.module('stackstoreApp')
 
 
 
-        $scope.handleStripe = function(status, response) {
-            console.log(status)
+    var test = 0;
+ $scope.handleStripe = function(status, response){
+        if(response.error) {
+          console.log('card declined')
 
-            if (response.error) {
-                console.log('response error getting hit', response.error)
-            } else {
-                console.log(response)
-                var token = response.id
-            }
-        }
+        } else {
+          console.log(response)
+          var token = response.id
+          console.log(token)
+          $scope.order.status = "ClosedCart"
+          $http.put('/api/carts/'+ $scope.order._id, $scope.order).success(function(data){
+            console.log(data)
+          $cookieStore.remove('cart')
+          })
 
-    });
+//   Stripe.charges.create({
+//   amount: 1000, // amount in cents, again
+//   currency: "usd",
+//   card: token,
+//   description: "payinguser@example.com"
+// }, function(err, charge) {
+//   if (err && err.type === 'StripeCardError') {
+//     // The card has been declined
+//   }
+// });
+
+
+         
+      }
+    }
+
+    
+  });
+
