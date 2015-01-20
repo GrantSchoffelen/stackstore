@@ -44,40 +44,27 @@ exports.create = function(req, res) {
 
 // Updates an existing cart in the DB.
 exports.update = function(req, res) {
-
-  if(req.body._id) { delete req.body._id; }
-  Cart.findById(req.params.id, function (err, cart) {
-    if (err) { return handleError(res, err); }
-    if(!cart) { return res.send(404); }
-    var updated = _.extend(cart, req.body);
-    console.log('updated carttttt', cart)
-    updated.save(function (err) {
-      if (err) { return handleError(res, err); }
-      return res.json(200, cart);
-
-//     console.log('req.bodyyyyyyyyyyyyyyyyyyyyyy', req.body.lineItems)
-//     if (req.body._id) {
-//         delete req.body._id;
-//     }
-//     Cart.findById(req.params.id, function(err, cart) {
-//         if (err) {
-//             return handleError(res, err);
-//         }
-//         if (!cart) {
-//             return res.send(404);
-//         }
-//         var updated = _.extend(cart, req.body);
-//         console.log('updated carttttt', cart)
-//         updated.save(function(err) {
-//             if (err) {
-//                 return handleError(res, err);
-//             }
-//             return res.json(200, cart);
-//         });
-
+    console.log('req.bodyyyyyyyyyyyyyyyyyyyyyy', req.body.lineItems)
+    if (req.body._id) {
+        delete req.body._id;
+    }
+    Cart.findById(req.params.id, function(err, cart) {
+        if (err) {
+            return handleError(res, err);
+        }
+        if (!cart) {
+            return res.send(404);
+        }
+        var updated = _.extend(cart, req.body);
+        console.log('updated carttttt', cart)
+        updated.save(function(err) {
+            if (err) {
+                return handleError(res, err);
+            }
+            return res.json(200, cart);
+        });
     });
 };
-}
 
 
 // Deletes a cart from the DB.
