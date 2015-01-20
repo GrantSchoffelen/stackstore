@@ -1,21 +1,21 @@
 'use strict';
 
-describe('Controller: CheckoutCtrl', function () {
+describe('Controller: CheckoutCtrl', function() {
 
-  // load the controller's module
-  beforeEach(module('stackstoreApp'));
+    // load the controller's module
+    beforeEach(module('stackstoreApp'));
 
-  var CheckoutCtrl, scope;
+    var CheckoutCtrl, scope;
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    CheckoutCtrl = $controller('CheckoutCtrl', {
-      $scope: scope
+    // Initialize the controller and a mock scope
+    beforeEach(inject(function($controller, $rootScope) {
+        scope = $rootScope.$new();
+        CheckoutCtrl = $controller('CheckoutCtrl', {
+            $scope: scope
+        });
+    }));
+
+    it('should ...', function() {
+        expect(1).toEqual(1);
     });
-  }));
-
-  it('should ...', function () {
-    expect(1).toEqual(1);
-  });
 });

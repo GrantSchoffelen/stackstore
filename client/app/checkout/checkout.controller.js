@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('stackstoreApp')
+
   .controller('CheckoutCtrl', function ($scope, $stateParams, $http, $q, $cookieStore) {
   	$http.get('/api/carts/' + $stateParams.id).success(function(data){
   
@@ -8,26 +9,26 @@ angular.module('stackstoreApp')
                   
 
 
-                   $scope.finalPrice = function(){
-                   	$scope.totalQuantity = 0; 
-                   	$scope.totalTax = 0;
-                   	$scope.totalShipping = 0;
-                  	
 
-                  for(var i=0; i<$scope.order.lineItems.length; i++){
-                  	console.log($scope.order.lineItems[i].quantity)
-                  	$scope.totalTax += Number(($scope.order.lineItems[i].tax))
-                  	$scope.totalShipping += Number(($scope.order.lineItems[i].shipping))
+            $scope.finalPrice = function() {
+                $scope.totalQuantity = 0;
+                $scope.totalTax = 0;
+                $scope.totalShipping = 0;
 
-                   	$scope.totalQuantity += Number(($scope.order.lineItems[i].totalPrice))
-                   }
-               	$scope.totalFinal =($scope.totalQuantity + $scope.totalTax + $scope.totalShipping)    
-               }
 
-               $scope.finalPrice()
+                for (var i = 0; i < $scope.order.lineItems.length; i++) {
+                    console.log($scope.order.lineItems[i].quantity)
+                    $scope.totalTax += Number(($scope.order.lineItems[i].tax))
+                    $scope.totalShipping += Number(($scope.order.lineItems[i].shipping))
 
-                })
+                    $scope.totalQuantity += Number(($scope.order.lineItems[i].totalPrice))
+                }
+                $scope.totalFinal = ($scope.totalQuantity + $scope.totalTax + $scope.totalShipping)
+            }
 
+            $scope.finalPrice()
+
+        })
 
 
 
@@ -64,3 +65,4 @@ angular.module('stackstoreApp')
 
     
   });
+

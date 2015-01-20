@@ -1,21 +1,21 @@
 'use strict';
 
-describe('Controller: ProductCtrl', function () {
+describe('Controller: ProductCtrl', function() {
 
-  // load the controller's module
-  beforeEach(module('stackstoreApp'));
+    // load the controller's module
+    beforeEach(module('stackstoreApp'));
 
-  var ProductCtrl, scope;
+    var ProductCtrl, scope;
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    ProductCtrl = $controller('ProductCtrl', {
-      $scope: scope
+    // Initialize the controller and a mock scope
+    beforeEach(inject(function($controller, $rootScope) {
+        scope = $rootScope.$new();
+        ProductCtrl = $controller('ProductCtrl', {
+            $scope: scope
+        });
+    }));
+
+    it('should ...', function() {
+        expect(1).toEqual(1);
     });
-  }));
-
-  it('should ...', function () {
-    expect(1).toEqual(1);
-  });
 });

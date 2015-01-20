@@ -2,13 +2,7 @@
 
 angular.module('stackstoreApp')
   .factory('cartFactory', function($http, $q) {
-    // Service logic
-    // ...
 
-    var meaningOfLife = 42;
-
-
-    // Public API here
     return {
      
       findUsersCart: function(cart, userId) {
