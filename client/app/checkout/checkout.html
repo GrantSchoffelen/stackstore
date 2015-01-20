@@ -57,56 +57,41 @@
             </div>
             <div class="col-xs-3">
 
-             <form action="/charge" method="POST">
-
-  <script
-    src="https://checkout.stripe.com/checkout.js"
-    class="stripe-button"
-    data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-
-    data-image="http://www.pitsimulator.com/arc100.jpg"
-    data-name="Give me your money!"
-    data-description="2 widgets ($20.00)"
-    data-amount="2000">
-  </script>
-</form>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-</div>
-Angular strip form
+{{order}}
+
     <div class="container" >
 
-            <form stripe-form="handleStripe" name="myForm">
+              <form stripe-form="handleStripe" name="myForm">
 
               <div class="span3">
                 <label for="">Card number</label>
                 <input type="text" class="input-block-level" ng-model="number" payments-validate="card" payments-format="card" payments-type-model="type" ng-class="myForm.number.$card.type"/>
               </div>
-
+              
               <div class="span1">
                 <label for="">Expiry</label>
                 <input type="text" class="input-block-level" ng-model="expiry" payments-validate="expiry" payments-format="expiry" />
               </div>
-
+              
               <div class="span3">
                 <label for="">Name on card </label>
                 <input type="text" class="input-block-level">
               </div>
-
+              
               <div class="span1">
                 <label for="">CVC</label>
                 <input type="text" class="input-block-level" ng-model="cvc" payments-validate="cvc" payments-format="cvc" payments-type-model="type"/>
               </div>
-
+              
               <div class="span4">
                 <button type="submit" class="btn btn-primary btn-large">Submit</button>
               </div>
             </form>
-
     </div>
 

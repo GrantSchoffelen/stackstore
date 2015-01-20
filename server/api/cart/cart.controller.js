@@ -36,7 +36,6 @@ exports.create = function(req, res) {
 
 // Updates an existing cart in the DB.
 exports.update = function(req, res) {
-  console.log('req.bodyyyyyyyyyyyyyyyyyyyyyy', req.body.lineItems)
   if(req.body._id) { delete req.body._id; }
   Cart.findById(req.params.id, function (err, cart) {
     if (err) { return handleError(res, err); }
