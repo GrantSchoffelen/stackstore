@@ -15,6 +15,7 @@ exports.index = function(req, res) {
 
 // Get a single cart
 exports.show = function(req, res) {
+    console.log('id: ', req.params.id)
     Cart.findById(req.params.id, function(err, cart) {
         if (err) {
             return handleError(res, err);
@@ -26,7 +27,17 @@ exports.show = function(req, res) {
     });
 };
 
-
+exports.getOrders = function(req, res){
+    console.log('asdfasfdasfd')
+    console.log('user: ', req.query.user)
+    Cart.find({user: req.query.user}, function(err, cart){
+         if (err) {
+            return handleError(res, err);
+        }
+          console.log('carts: ', cart)
+        return res.json(201, cart);
+    })
+}
 
 
 

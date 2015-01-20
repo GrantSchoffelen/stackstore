@@ -4,7 +4,8 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var CartSchema = new Schema({
-    user: String, // null or undefined if user not logged in
+    user: {type: Schema.Types.ObjectId,
+            ref: 'User'}, // null or undefined if user not logged in
     creationDate: Date,
     status: String,
     lineItems: [{
