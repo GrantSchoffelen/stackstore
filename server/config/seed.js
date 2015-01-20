@@ -256,14 +256,14 @@ Product.find({}).remove(function() {
               _user: user_parameter._id, 
               _prod: product_parameter._id,
               date: new Date('2015-01-11T11:51:00'),
-              text: "First review by user test",
+              text: "This is my first review and this product is great",
               rating: 5
             },
             {
               _user: user_parameter._id, 
               _prod: product_parameter._id,
               date: new Date('2014-11-11T11:51:00'),
-              text: "Second review by user test",
+              text: "This is my second review and this product is super",
               rating: 3
             }
 

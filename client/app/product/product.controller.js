@@ -16,7 +16,7 @@ angular.module('stackstoreApp')
 
 
   })
-  .controller('ProductDetailCtrl', function (reviewFactory, $scope, Product, $http, $stateParams, $cookieStore) {
+  .controller('ProductDetailCtrl', function (User, reviewFactory, $scope, Product, $http, $stateParams, $cookieStore) {
   
 // Helper function for $http.post update databse with information
     $scope.update = function() {
@@ -29,6 +29,42 @@ angular.module('stackstoreApp')
 
 // $scope.displayThis = reviewFactory.displayThis;
 $scope.allReviews = reviewFactory.reviews;
+
+$scope.getNumber = function(reviewRating){
+  return new Array(reviewRating);
+};
+
+
+// $scope.getUserNameFromUserId = function(user_id) {
+
+// var username = "";
+// console.log("USer: ", User)
+
+// // //get user
+// // //.findOne({ _id: user_id })
+// // User
+// // .findOne({ name : "Test User"})
+// // .populate('_user')
+// // .exec(function (err, user) {
+// //   if (err) return handleError(err);
+// //   console.log('The creator is %s', user.name);
+// //   username = user.name;
+// //   // prints "The creator is Aaron"
+// // })
+
+
+
+// // return User.name; 
+// return username;
+// };
+
+
+
+
+
+
+
+
 
 
 

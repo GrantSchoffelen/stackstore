@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('stackstoreApp')
-.factory('reviewFactory', function ($stateParams, $http, $q, $resource) {
+.factory('userFactory', function (reviewFactory, $stateParams, $http, $q, $resource) {
   
- var Review = $resource('api/review/:prodId', {
-      prodId: '@_id'
+ var User = $resource('api/users/:userId', {
+      userId: '@_id'
     })
 
 
@@ -20,8 +20,8 @@ angular.module('stackstoreApp')
       //   });
       // },
 
-  Review.reviews = [];
-  Review.query({prodId:$stateParams.id}, function(reviews){
+  User.users = [];
+  User.query({userId:$reviewFactory}, function(reviews){
     console.log(reviews)
     angular.copy(reviews, Review.reviews)
   })
@@ -44,7 +44,7 @@ angular.module('stackstoreApp')
       // },
   // }
     // }
-    return Review;
+    return User;
   })
 
 
