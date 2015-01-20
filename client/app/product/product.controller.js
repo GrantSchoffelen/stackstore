@@ -1,5 +1,7 @@
 'use strict';
 
+// one controller per file
+
 angular.module('stackstoreApp')
     .controller('ProductCtrl', function($scope, Product, $http, socket) {
         $scope.products = Product.all();

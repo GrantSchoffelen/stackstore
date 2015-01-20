@@ -2,7 +2,7 @@
 
 angular.module('stackstoreApp')
   .service('CategoriesService', function ($http, $q) {
-
+    // this is good, but could be replaced with ngresource
     return {
       all: function() {
         var categories;

@@ -15,6 +15,7 @@ angular.module('stackstoreApp')
             lineItems: []
           }; 
           console.log("i am running post")
+          //good
           return $http.post('/api/carts/', cart)
 
         } else {

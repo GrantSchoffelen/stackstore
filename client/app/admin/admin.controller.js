@@ -1,5 +1,7 @@
 'use strict';
 
+//mega controller!
+
 angular.module('stackstoreApp')
     .controller('AdminCtrl', function($scope, $http, Auth, User, Product, CategoriesService, $filter, $mdToast, $animate) {
         // Use the User $resource to fetch all users
@@ -7,11 +9,6 @@ angular.module('stackstoreApp')
         Product.all().success(function(data) {
             $scope.products = data
         });
-
-        // $scope.categ = {
-        //    status: []
-        //  };
-        //  console.log("set scope.categ.status to clothes and electronics")
 
 
 
@@ -38,7 +35,7 @@ angular.module('stackstoreApp')
                 pictures: ['http://www.pitsimulator.com/arc100.jpg'],
                 categories: []
             }
-
+            // you shouldn't make http calls in the controller
             $http.post('/api/product/', $scope.newProduct).success(function(productsFromDb) {
                 console.log('new product', $scope.newProduct);
                 Product.all().success(function(data) {
@@ -54,6 +51,7 @@ angular.module('stackstoreApp')
             $scope.newCategory = {
                 name: "New Category"
             }
+            // you shouldn't make http calls in the controller
             $http.post('/api/categoriess/', $scope.newCategory).success(function(categoriesFromDb) {
                 console.log('new category', $scope.newCategory);
                 CategoriesService.all().success(function(data) {
@@ -79,8 +77,8 @@ angular.module('stackstoreApp')
             };
 
 
-            console.log('before updateeeeeeeeeeeeeeeeeeeeee', prod)
             if (nameNoGood == false) {
+                console.log('before updateeeeeeeeeeeeeeeeeeeeee', prod)
                 $http.put('/api/product/' + prod._id, prod).success(function(productsFromDb) {
                     console.log('updated product', productsFromDb);
                 })
@@ -91,12 +89,14 @@ angular.module('stackstoreApp')
                     .position('top right')
                     .hideDelay(1000)
                 );
+                //js alert?
                 alert("you already have a product with the same!");
             }
         }
 
 
         $scope.updateCategory = function(category) {
+            // you shouldn't make http calls in the controller
             $http.put('/api/categoriess/' + category._id, category).success(function(categoriesFromDb) {
                 console.log('updated category', category);
             })
@@ -105,6 +105,7 @@ angular.module('stackstoreApp')
 
         $scope.deleteProduct = function(prod) {
 
+            // you shouldn't make http calls in the controller
             $http.delete('/api/product/' + prod._id).success(function(productsFromDb) {
                 console.log('product deleted')
                 Product.all().success(function(data) {
@@ -114,18 +115,13 @@ angular.module('stackstoreApp')
             });
 
 
-            // Product.remove({ id: prod._id });
-            // angular.forEach($scope.products, function(u, i) {
-            //   if (u === prod) {
-            //     $scope.products.splice(i, 1);
-            //   }
-            // });
         };
 
 
 
         $scope.deleteCategory = function(cat) {
 
+            // you shouldn't make http calls in the controller
             $http.delete('/api/categoriess/' + cat._id).success(function(categoryData) {
                 console.log('category deleted')
                 CategoriesService.all().success(function(data) {
@@ -138,7 +134,6 @@ angular.module('stackstoreApp')
 
 
         $scope.showCategories = function(prod_param) {
-            console.log("prod_param ======== ", prod_param);
 
             var selected = [];
             angular.forEach($scope.categories, function(one_category_object) {

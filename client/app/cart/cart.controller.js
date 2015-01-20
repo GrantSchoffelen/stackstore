@@ -100,6 +100,8 @@ angular.module('stackstoreApp')
     $scope.getCurrentUser = Auth.getCurrentUser;
 
     $scope.ifLoggedIn = function(check) {
+
+      //state.go better
       if (check) {
         $window.location.href = '/checkout/' + $stateParams.id;
       } else {
