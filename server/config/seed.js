@@ -10,33 +10,12 @@
  var Product = require('../api/product/product.model');
  var Category = require('../api/categories/categories.model');
 // var Order = require('../api/orders/orders.model');
- var Review = require('../api/review/review.model');
+var Review = require('../api/review/review.model');
 // var Cart = require('../api/cart/cart.model');
 
 
 
-Review.find({}).remove(function() {
 
-  Product.findOne({ name: "New i-phone 6 -Plus" }).exec()
-  .then(function (product_parameter) {
-
-    Review.create({
-      _user: product_parameter._id, 
-      _prod: product_parameter._id,
-      date: new Date('2015-01-11T11:51:00'),
-      text: "First review",
-      rating: 5
-  }, 
-
-  {
-    _user: product_parameter._id, 
-    _prod: product_parameter._id,
-    date: new Date('2015-01-12T11:51:00'),
-    text: "Second review",
-    rating: 3
-  })
-  });
-  });
 
 
   // Order.find({}).remove(function() {
@@ -62,6 +41,30 @@ Review.find({}).remove(function() {
 //         }
 // });
 // });
+
+
+
+
+Category.find({}).remove(function() {
+  Category.create({
+    name : "all"
+  }, {
+    name : 'kitchenware'
+  }, {
+    name : 'entertainment'
+  }, {
+    name : 'clothes'
+  },  {
+    name : 'books'
+  },  {
+    name : 'movies'
+  },{
+    name : 'electronics'
+  });
+});
+
+
+
 
 Product.find({}).remove(function() {
   Product.create({
@@ -208,28 +211,71 @@ Product.find({}).remove(function() {
     categories:['movies', 'electronics']
   }
 
+  , function(err) { 
 
+   console.log("finished seeding products")
 
-  );
+   User.find({}).remove(function() {
+    User.create({
+      provider: 'local',
+      name: 'Test User',
+      email: 'test@test.com',
+      password: 'test'
+    }, {
+      provider: 'local',
+      role: 'admin',
+      name: 'Admin',
+      email: 'admin@admin.com',
+      password: 'admin'
+    }, function(err) {
+     console.log("finished seeding users")
+
+     Review.find({}).remove(function() {
+      console.log("inserting reviews")
+
+      var queryProd  = Product.where({ name: 'i-phone' });
+      var queryUser  = User.where({ name: 'Test User' });
+
+      queryProd.findOne(function (err, product_parameter) {
+        if (err) {
+          console.log("logging error product")
+          return handleError(err);
+        }
+
+        queryUser.findOne(function (err, user_parameter) {
+          if (err) {
+            console.log("logging error user")
+            return handleError(err);
+          }
+          console.log("product_parameter: "+product_parameter)
+          console.log("user_parameter: "+user_parameter)
+
+          if (product_parameter) {
+
+            Review.create({
+              _user: user_parameter._id, 
+              _prod: product_parameter._id,
+              date: new Date('2015-01-11T11:51:00'),
+              text: "First review by user test",
+              rating: 5
+            },
+            {
+              _user: user_parameter._id, 
+              _prod: product_parameter._id,
+              date: new Date('2014-11-11T11:51:00'),
+              text: "Second review by user test",
+              rating: 3
+            }
+
+            )
+          }
+        })
+      });
+      }); //closing   Review.find({}).remove(function() {
+    } // end of callback
+    );
+   });
 });
-
-
-Category.find({}).remove(function() {
-  Category.create({
-    name : "all"
-  }, {
-    name : 'kitchenware'
-  }, {
-    name : 'entertainment'
-  }, {
-    name : 'clothes'
-  },  {
-    name : 'books'
-  },  {
-    name : 'movies'
-  },{
-    name : 'electronics'
-  });
 });
 
 
@@ -257,20 +303,3 @@ Category.find({}).remove(function() {
 //   });
 // });
 
-User.find({}).remove(function() {
-  User.create({
-    provider: 'local',
-    name: 'Test User',
-    email: 'test@test.com',
-    password: 'test'
-  }, {
-    provider: 'local',
-    role: 'admin',
-    name: 'Admin',
-    email: 'admin@admin.com',
-    password: 'admin'
-  }, function() {
-     // console.log('finished populating users');
-   }
-   );
-});

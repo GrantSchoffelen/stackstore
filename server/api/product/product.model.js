@@ -9,8 +9,8 @@ var ProductSchema = new Schema({
   price: Number,
   isAvailable: Boolean,
   pictures: Array,
-  //categories: {type: [String], required: true}
-  categories: Array
+  categories: {type: [String], required: true}
+  //categories: Array
 });
 
 

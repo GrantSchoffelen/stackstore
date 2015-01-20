@@ -43,28 +43,33 @@
   
       
 
+<!-- <div>{{displayThis("testing func call")}}</div> 
+
+skill.skill.level   = allReviews[0].rating
+
+-->
+<div>debug: {{allReviews}}</div>
 
 
-<div class="col-md-8" id="abilities">
+<div class="col-md-8" id="reviews">
         <ul class="no-bullets">
-          <div class="editTitles" ng-show="textBtnFormSkill.$visible">Skill Name</div>
-          <li class= 'menu-left'>
-            <span class="ability-title" editable-text="skill.skill.name">{{skill.skill.name}}</span>
-            <div class="editTitles" ng-show="textBtnFormSkill.$visible">Skill Level</div>
-            <span editable-select="skill.skill.level" e-name="textBtnFormSkill" e-ng-options="stars for stars in [5,4,3,2,1]">
+        
+     
+        
+            <span editable-select="allReviews[0].rating" e-name="textBtnFormSkill" e-ng-options="stars for stars in [5,4,3,2,1]">
             </span>
             <span class="ability-score">
 
-            <span class="glyphicon glyphicon-star filled" ng-repeat="i in getNumber(skill.skill.level) track by $index" ng-hide="textBtnFormSkill.$visible"></span>
+            <span class="glyphicon glyphicon-star filled" ng-repeat="i in allReviews[0].rating track by $index" ng-hide="textBtnFormSkill.$visible"></span>
   
             </span>
-          </li>
+        
           <!--  <strong editable-text = "skill.skill.level">{{skill.skill}}</strong> -->
         </ul>
         <div class = "row">
           <ul>
             <center>
-            <span ng-show="textBtnFormSkill.$visible">
+       
             <md-button type="submit" class="md-raised md-primary glyphicon glyphicon-saved" ng-disabled="textBtnFormSkill.$waiting">
             Save
             </md-button>

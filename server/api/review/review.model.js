@@ -11,4 +11,9 @@ var ReviewSchema = new Schema({
   rating: Number
 });
 
+ReviewSchema.statics.findReviewByProduct = function(prod_id_parameter) {
+  return this.find({_prod: prod_id_parameter})
+}
+
+ 
 module.exports = mongoose.model('Review', ReviewSchema);

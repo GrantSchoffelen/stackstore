@@ -138,9 +138,10 @@ angular.module('stackstoreApp')
             });
         };
 
-
+    
 
         $scope.showCategories = function(prod_param) {
+
             console.log("prod_param ======== ", prod_param);
 
             var selected = [];
