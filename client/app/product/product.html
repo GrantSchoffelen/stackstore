@@ -31,7 +31,8 @@
             <span class="pull-right text-danger">${{product.price}}</span>
             </h2>
             <h5>
-            Status: <span class="text-danger">{{product.isAvailable}}</span>
+            Status: <span
+             class="text-danger">{{product.isAvailable}}</span>
             </h5>
             <h4><i>Description:</i></h4>
             <p>{{product.description}}</p>
@@ -40,8 +41,79 @@
         </div>
       </div>
     </div>
-    <div class="panel panel-default">
+  
+      
+
+<!-- <div>{{displayThis("testing func call")}}</div> 
+
+skill.skill.level   = allReviews[0].rating
+
+
+<div>debug: {{allReviews}}</div>
+-->
+
+<div ng-repeat="review in allReviews">
+  <ul class="no-bullets">            
+      <span class="glyphicon glyphicon-star" value= ''ng-repeat="i in getNumber(review.rating) track by $index"> </span> {{review.rating}}.0 stars                         
+        <br>
+        by {{review._user.name}}  <br> on {{review.date | date: "medium"}} 
+        <br> {{review.text}}
+        <br>
+        <br>
+    </ul>
+</div>
+
+ 
+   
+
+
+<div ng-show="addProductForm.$visible">
+ <span editable-select="newReview.rating" e-ng-options="stars for stars in [5,4,3,2,1]">             
+  <span  class="glyphicon glyphicon-star" ng-repeat="i in getNumber(newReview.rating) track by $index"> </span> 
+  {{newReview.rating}}.0 stars 
+            </span> </div>
+
+ <form editable-form name="addProductForm" onaftersave="saveReview(newReview)" >
+
+
+        <div ng-show="addProductForm.$visible">Write your review below</div>
+
+        <button type="button" ng-click="addProductForm.$show()" 
+          ng-if="!addProductForm.$visible && isLoggedIn()" class="pull-left">Add New Review</button>
+          
+        <strong editable-textarea="newReview.text" e-cols='80' e-rows='2'></strong><br>
+
+<br>
+
+        <div>
+          <span ng-show="addProductForm.$visible">
+          <button type="submit" class="glyphicon glyphicon-saved" ng-disabled="addProductForm.$waiting">
+          Save
+          </button>
+          <button type="button" class="glyphicon glyphicon-remove-sign" ng-disabled="addProductForm.$waiting" ng-click="addProductForm.$cancel()">
+          Cancel
+          </button>
+          </span>
+      
+        </div>
+      </form>
+
+
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+  <!-- <div class="panel panel-default">
       <div class="panel-heading">
+
+
         <span class="glyphicon glyphicon-play"></span> Reviews
       </div>
       <div class="panel-body">
@@ -60,12 +132,13 @@
               </p>
             </div>
           </div>
-          <!-- {{episode.firstAired | date: 'short'}} -->
+          <!-- {{episode.firstAired | date: 'short'}}
           </p>
           <p></p>
         </div>
       </div>
     </div>
-  </div>
+  
+  </div> -->
 </div>
-
+</div>

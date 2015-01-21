@@ -12,11 +12,23 @@ exports.index = function(req, res) {
 };
 
 // Get a single review
+// exports.show = function(req, res) {
+//     Review.find({_prod: req.params.id}, function (err, review) {
+// //  Review.findById(req.params.id, function (err, review) {
+//     if(err) { return handleError(res, err); }
+//     if(!review) { return res.send(404); }
+//     return res.json(review);
+//   });
+// };
+
 exports.show = function(req, res) {
-  Review.findById(req.params.id, function (err, review) {
+    Review.find({_prod: req.params.id})
+      .populate('_user')
+      .exec(function (err, review) {
+//  Review.findById(req.params.id, function (err, review) {
     if(err) { return handleError(res, err); }
     if(!review) { return res.send(404); }
-    return res.json(review);
+    return res.json(200,review);
   });
 };
 

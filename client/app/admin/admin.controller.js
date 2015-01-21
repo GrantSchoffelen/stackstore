@@ -68,15 +68,18 @@ angular.module('stackstoreApp')
 
 
         $scope.addCategory = function() {
-            $scope.newCategory = {
-                name: "New Category"
-            }
-            $http.post('/api/categoriess/', $scope.newCategory).success(function(categoriesFromDb) {
-                console.log('new category', $scope.newCategory);
-                CategoriesService.all().success(function(data) {
-                    $scope.categories = data
-                });
-            })
+            // $scope.newCategory = {
+            //     name: "New Category"
+            // }
+            // $http.post('/api/categoriess/', $scope.newCategory).success(function(categoriesFromDb) {
+            //     console.log('new category', $scope.newCategory);
+            //     CategoriesService.all().success(function(data) {
+            //         $scope.categories = data
+            //     });
+            // })
+
+            var newCat = new Category("my_category");
+            newCat.save();
         }
 
 
@@ -152,7 +155,7 @@ angular.module('stackstoreApp')
             });
         };
 
-
+    
 
         $scope.showCategories = function(prod_param) {
             // console.log("prod_param ======== ", prod_param);
