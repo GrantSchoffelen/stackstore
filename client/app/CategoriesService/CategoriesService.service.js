@@ -23,6 +23,21 @@ angular.module('stackstoreApp')
       return deferred.promise
      },
   }
-  });
+  })
+
+  // .factory('Category', function($http) {
+
+  //    var Category = function(name) {
+  //     this.name = name;
+  //   }
+
+  //   Category.prototype.save = function() {
+  //     $http.post('/api/category', this);
+     
+
+  // }
+
+  //   return Category;
+  //   }
 
 

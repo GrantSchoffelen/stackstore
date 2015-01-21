@@ -37,6 +37,7 @@ angular.module('stackstoreApp')
         if(response.error) {
           console.log('card declined')
           $scope.cardDeclined = true; 
+          $scope.payed = false; 
 
         } else {
           console.log(response)
