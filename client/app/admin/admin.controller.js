@@ -36,10 +36,12 @@ angular.module('stackstoreApp')
         });
 
 
-
         $scope.addProduct = function() {
+            var newProductName = 'New Product ' + Math.floor((Math.random()*1000)).toString(); 
+            console.log(newProductName)
+           
             $scope.newProduct = {
-                name: "new product",
+                name: newProductName,
                 description: "add description",
                 price: 0,
                 isAvailable: true,
@@ -88,28 +90,11 @@ angular.module('stackstoreApp')
             // }
             // console.log('name of prod', prod.name)
             // console.log('name of prodcut', $scope.products[0].name)
-            var nameNoGood = false;
-            for (var i = 0; i < $scope.products.length; i++) {
-                if ($scope.products[i].name === prod.name) {
-                    nameNoGood = true;
-                }
-            };
-
-
-            console.log('before updateeeeeeeeeeeeeeeeeeeeee', prod)
-            if (nameNoGood == false) {
+            
                 $http.put('/api/product/' + prod._id, prod).success(function(productsFromDb) {
                     // console.log('updated product', productsFromDb);
                 })
-            } else {
-                $mdToast.show(
-                    $mdToast.simple()
-                    .content("added to cart :)")
-                    .position('top right')
-                    .hideDelay(1000)
-                );
-                alert("you already have a product with the same!");
-            }
+    
         }
 
 

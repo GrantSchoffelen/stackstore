@@ -4,19 +4,16 @@ angular.module('stackstoreApp')
 
 .controller('MainCtrl', function($scope, Product, CategoriesService, $http, socket, cartFactory, $cookieStore,
     $mdToast, $animate, Auth) {
-    // $scope.awesomeThings = [];
 
 
     Product.all().success(function(data) {
         $scope.products = data
-        // return $scope.products
-    });
 
+    });
     var cart = $cookieStore.get('cart') || {};
     var userId = Auth.getCurrentUser()._id;
     console.log(userId, 'userrrrrrrrrrrrrrrrrrrrrrrrrrrr id')
 
-    // A unlogged user, goes into the site, and create a cart
     cartFactory.findUsersCart(cart, userId).success(function(cartData) {
         $cookieStore.put('cart', cartData);
         $scope.cart = cartData;
@@ -24,43 +21,12 @@ angular.module('stackstoreApp')
 
     });
 
-
-    // cartFactory.findUsersCart($scope.cart).success(function(data){
-    //     console.log(data)
-    //     $scope.cart = data
-    //     console.log("Scope.cart-------", $scope.cart)
-    // })
-
-    // return $http.get('/api/product').success(function(products) {
-    //     $scope.products = products;
-    //     return $scope.products
-    //         // console.log(cartData)
-    // })
-
-    // $scope.addToCart = function(product) {
-    //     Product.post(product).then(function(cartData) {
-    //         console.log(cartData);
-    //     });
-    //   $mdToast.show(
-    //   $mdToast.simple()
-    //   .content("added to cart :)")
-    //   .position('top right')
-    //   .hideDelay(1000)
-    //   );
-    // };
-
     $scope.quantity = 1;
     $scope.addToCart = function(product, quantity) {
         Product.addCart(product, $scope.quantity).then(function(cartData) {
             console.log(cartData);
         });
     }
-
-    // $scope.addToCart = function(product) {
-    //     Product.post(product).then(function(cartData) {
-    //         console.log(cartData);
-    //     });
-    // };
 
 
     $scope.matchCatWithProds = function(category) {
@@ -72,35 +38,45 @@ angular.module('stackstoreApp')
             $scope.categories = categories;
         });
     };
-    // $http.get('/api/things').success(function(awesomeThings) {
-    //   $scope.awesomeThings = awesomeThings;
-    //   socket.syncUpdates('thing', $scope.awesomeThings);
-    // });
+    $scope.searchForCat();
 
-    // $scope.addThing = function() {
-    //   if($scope.newThing === '') {
-    //     return;
-    //   }
-    //   $http.post('/api/things', { name: $scope.newThing });
-    //   $scope.newThing = '';
-    // };
 
-    // $scope.deleteThing = function(thing) {
-    //   $http.delete('/api/things/' + thing._id);
-    // };
-
-    // $scope.$on('$destroy', function () {
-    //   socket.unsyncUpdates('thing');
-    // });
-
-    // $http.get('/api/produts').success(function(produts){
-    //   $scope.produts = products;
-    // })
-
-    // $scope.findProducts =function($scope) {
-    //   $http.get('/api/produts').success(function(produts){
-    //     $scope.produts = products;
-    //   })
-    // };
+ // $scope.toastPosition = {
+ //    bottom: true,
+ //    top: false,
+ //    left: ,
+ //    right: true
+ //  };
+ //  $scope.getToastPosition = function() {
+ //    return Object.keys($scope.toastPosition)
+ //      .filter(function(pos) { return $scope.toastPosition[pos]; })
+ //      .join(' ');
+ //  };
+ //  $scope.showCustomToast = function() {
+ //    $mdToast.show({
+ //      controller: 'ToastCtrl',
+ //      templateUrl: 'toast-template.html',
+ //      hideDelay: 6000,
+ //      position: $scope.getToastPosition()
+ //    });
+ //  };
+  $scope.showSimpleToast = function() {
+    $mdToast.show(
+      $mdToast.simple()
+        .content('Simple Toast!')
+        .position('bottom', 'right')
+        .hideDelay(0)
+    );
+  };
+  // $scope.showActionToast = function() {
+  //   var toast = $mdToast.simple()
+  //         .content('Action Toast!')
+  //         .action('OK')
+  //         .highlightAction(false)
+  //         .position($scope.getToastPosition());
+  //   $mdToast.show(toast).then(function() {
+  //     alert('You clicked \'OK\'.');
+  //   });
+  // };
 
 });
