@@ -1,11 +1,12 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 <div class="row">
   <div  class="col-md-3 recomendations">
-    <div ng-repeat='cat in productFromCat'>
+    <h3>Recommendations:</h3>
+    <div ng-repeat='cat in productFromCat | limitTo: 5'>
       <div class="thumbnail">
         <h6>{{cat.name}}</h6>
           <a href="/product/{{cat._id}}"><img ng-src='{{cat.pictures[0]}}' height="150" width="75" class="img-responsive"></a>
-          <a href="/product/{{cat._id}}" class=" moreInfo btn btn-sdefault">More Info</a>
+         
     </div>
      </div>
   </div>

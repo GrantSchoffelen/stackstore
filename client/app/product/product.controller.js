@@ -41,7 +41,6 @@ $scope.cartId = $cookieStore.get('cart')._id;
     // promise way
     Product.get($stateParams.id).then(function(data) {
       $scope.product = data;
-       console.log($scope.product.categories[0])
 
             Product.all().then(function(data) {
 
@@ -59,7 +58,9 @@ $scope.cartId = $cookieStore.get('cart')._id;
                 // console.log($scope.categoriesProduct.data[i].categories[0])
                 console.log($scope.productFromCat)
             })
+
     });
+
 
         $scope.addToCart = function(data, quantity) {
 
@@ -68,4 +69,3 @@ $scope.cartId = $cookieStore.get('cart')._id;
             });
         }
     })
-
