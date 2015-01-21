@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('stackstoreApp')
-    .controller('AdminCtrl', function(Category, $scope, $http, Auth, User, Product, CategoriesService, $filter, $mdToast, $animate) {
+    .controller('AdminCtrl', function($scope, $http, Auth, User, Product, CategoriesService, $filter, $mdToast, $animate) {
         // Use the User $resource to fetch all users
         $scope.users = User.query();
         Product.all().success(function(data) {

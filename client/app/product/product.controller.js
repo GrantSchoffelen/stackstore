@@ -16,16 +16,33 @@ angular.module('stackstoreApp')
 
 
   })
-  .controller('ProductDetailCtrl', function (User, reviewFactory, $scope, Product, $http, $stateParams, $cookieStore) {
+  .controller('ProductDetailCtrl', function ( Auth, reviewFactory, $scope, Product, $http, $stateParams, $cookieStore) {
   
+$scope.thisUserId = Auth.getCurrentUser()._id
+
 // Helper function for $http.post update databse with information
-    $scope.update = function() {
-      $http.post('api/review', $scope.reviews).success(function(data) {
-        console.log("Update to database Complete")
+    $scope.saveReview = function(new_review_parameter) {
+  console.log("new_review_parameter", new_review_parameter)
+     new_review_parameter['date'] = new Date();  
+     new_review_parameter['_user'] = $scope.thisUserId;
+     new_review_parameter['_prod'] = $stateParams.id;
+      $http.post('api/review', new_review_parameter).success(function(data) {
+        console.log("New Review saved to database Complete")
+        $scope.allReviews.unshift(data);
+
       });
     }
 
 
+$scope.newReview = { 
+    rating: 5,
+    text: "Enter text here..."
+  }
+
+
+$scope.isLoggedIn = function() {
+  return Auth.isLoggedIn();
+}
 
 // $scope.displayThis = reviewFactory.displayThis;
 $scope.allReviews = reviewFactory.reviews;

@@ -55,48 +55,34 @@ skill.skill.level   = allReviews[0].rating
   <ul class="no-bullets">            
       <span class="glyphicon glyphicon-star" value= ''ng-repeat="i in getNumber(review.rating) track by $index"> </span> {{review.rating}}.0 stars                         
         <br>
-        Below review was written by {{review._user.name}}
+        by {{review._user.name}}  <br> on {{review.date | date: "medium"}} 
         <br> {{review.text}}
         <br>
         <br>
     </ul>
 </div>
 
+ 
+   
+
+
+<div ng-show="addProductForm.$visible">
+ <span editable-select="newReview.rating" e-ng-options="stars for stars in [5,4,3,2,1]">             
+  <span  class="glyphicon glyphicon-star" ng-repeat="i in getNumber(newReview.rating) track by $index"> </span> 
+  {{newReview.rating}}.0 stars 
+            </span> </div>
+
+ <form editable-form name="addProductForm" onaftersave="saveReview(newReview)" >
+
+
+        <div ng-show="addProductForm.$visible">Write your review below</div>
+
+        <button type="button" ng-click="addProductForm.$show()" 
+          ng-if="!addProductForm.$visible && isLoggedIn()" class="pull-left">Add New Review</button>
+          
+        <strong editable-textarea="newReview.text" e-cols='80' e-rows='2'></strong><br>
 
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-  <form editable-form name="addProductForm" onaftersave="update(product)" >
-        <div ng-show="addProductForm.$visible">Product Name</div>
-        <button type="button" ng-click="addProductForm.$show()" ng-show="!addProductForm.$visible" ng-hide="addProductForm.$visible" class="pull-left">Add New Review</button>
-        <strong editable-textarea="product.name" e-cols='65' e-rows='1'>{{product.name}}</strong><br>
-
-        <div ng-show="addProductForm.$visible">Product Price
-        <br><span class="text-muted" editable-text="product.price">{{product.price}}</span>
-      </div>
-        <div ng-show="addProductForm.$visible">Product Description
-        <br><span class="text-muted" editable-text="product.description" ng-show="addProductForm.$visible">{{product.description}}</span></div>
-
- <span editable-select="allReviews[0].rating" e-ng-options="stars for stars in [5,4,3,2,1]">
-             
-                <span class="glyphicon glyphicon-star" ng-repeat="i in getNumber(allReviews[0].rating) track by $index"> </span> {{allReviews[0].rating}}.0 stars
-            </span>
-
-
-        <div ng-show="addProductForm.$visible">is available?
-        <br><span class="text-muted" editable-select="product.isAvailable" e-name='addProductForm' ng-show="addProductForm.$visible" e-ng-options="s for s in [true, false]">{{product.isAvailable}}</span></div>
-
-        <div ng-show="addProductForm.$visible">Product Pictures
-        <br><span class="text-muted" editable-text="product.pictures[0]">{{product.pictures[0]}}</span></div>
-
-<br>
-
-
 
         <div>
           <span ng-show="addProductForm.$visible">
@@ -107,19 +93,22 @@ skill.skill.level   = allReviews[0].rating
           Cancel
           </button>
           </span>
-          <button class="glyphicon glyphicon-trash" ng-click="deleteProduct(product)" ng-show="addProductForm.$visible"> Remove Product</button>
+      
         </div>
       </form>
 
 
 
+
+
+
 <br>
 <br>
 <br>
 <br>
 <br>
 <br>
-<br>
+
   <!-- <div class="panel panel-default">
       <div class="panel-heading">
 
@@ -151,4 +140,4 @@ skill.skill.level   = allReviews[0].rating
   
   </div> -->
 </div>
-
+</div>

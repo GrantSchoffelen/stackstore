@@ -22,7 +22,7 @@ angular.module('stackstoreApp')
 
   Review.reviews = [];
   Review.query({prodId:$stateParams.id}, function(reviews){
-    console.log(reviews)
+    console.log("REWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",reviews)
     angular.copy(reviews, Review.reviews)
   })
    
