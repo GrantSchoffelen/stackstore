@@ -2,7 +2,6 @@
 
 angular.module('stackstoreApp')
   .service('CategoriesService', function ($http, $q) {
-    // }
 
     return {
       all: function() {

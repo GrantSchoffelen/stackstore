@@ -1,13 +1,40 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 <div class="container">
   <p>The delete user and user index api routes are restricted to users with the 'admin' role.</p>
+
+      
   <ul class="list-group">
     <li class="list-group-item" ng-repeat="user in users">
-      <strong>{{user.name}}</strong><br>
+      <strong >{{user.name}}</strong><br>
+      <strong>Role:  </strong><strong editable-text="user.role" onaftersave="updateUser(user)">{{user.role}}</strong><br>
       <span class="text-muted">{{user.email}}</span>
+      
       <a ng-click="delete(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
     </li>
   </ul>
+
+</div>
+
+<div class="container">
+  <p>Orders in process</p>
+
+      
+  <ul class="list-group">
+    <li class="list-group-item" ng-repeat="cart in carts  | filter:{ status: 'ClosedCart' }">
+      <strong >Cart ID: {{cart._id}}</strong><br>
+      <strong>Cart Status: {{cart.status}} </strong><br>
+      <strong>User ID: {{cart.user}}</strong>
+      <ul>
+        <li ng-repeat = 'line in cart.lineItems'>{{line.name}}, {{line.quantity}} X {{line.purchasePrice }} = {{line.totalPrice | currency}}</strong>
+        </li>
+
+      </ul>
+      <span class="text-muted">{{user.email}}</span>
+      
+      <a ng-click="delete(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+    </li>
+  </ul>
+
 </div>
 
       <div class="label">Themed</div>

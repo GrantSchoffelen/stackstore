@@ -14,7 +14,7 @@ var ProductSchema = new Schema({
   isAvailable: Boolean,
   pictures: Array,
   categories: {type: [String], required: true}
-  //categories: Array
+
 });
 
 
@@ -37,10 +37,11 @@ ProductSchema
     });
 }, 'The product name is already in use.');
 
+
 var validatePresenceOf = function(value) {
-  return value && value.length;
+    return value && value.length;
 };
 
-
 module.exports = mongoose.model('Product', ProductSchema);
+
 

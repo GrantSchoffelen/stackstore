@@ -7,18 +7,18 @@
 var Categories = require('./categories.model');
 
 exports.register = function(socket) {
-  Categories.schema.post('save', function (doc) {
-    onSave(socket, doc);
-  });
-  Categories.schema.post('remove', function (doc) {
-    onRemove(socket, doc);
-  });
+    Categories.schema.post('save', function(doc) {
+        onSave(socket, doc);
+    });
+    Categories.schema.post('remove', function(doc) {
+        onRemove(socket, doc);
+    });
 }
 
 function onSave(socket, doc, cb) {
-  socket.emit('categories:save', doc);
+    socket.emit('categories:save', doc);
 }
 
 function onRemove(socket, doc, cb) {
-  socket.emit('categories:remove', doc);
+    socket.emit('categories:remove', doc);
 }

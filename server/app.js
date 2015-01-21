@@ -10,6 +10,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var express = require('express');
 var mongoose = require('mongoose');
 var config = require('./config/environment');
+var stripe = require("stripe")("sk_test_BQokikJOvBiI2HlWgH4olfQ2");
 
 // Connect to database
 mongoose.connect(config.mongo.uri, config.mongo.options);

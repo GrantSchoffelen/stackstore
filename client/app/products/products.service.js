@@ -25,12 +25,11 @@ angular.module('stackstoreApp')
                 var newLineItem = {
                         quantity: quantity,
                         productId: product._id,
-                        purchasePrice: product.price*quantity,
-                        tax: (product.price * 0.08)*quantity,
+                        purchasePrice: product.price,
+                        totalPrice: product.price * quantity,
+                        tax: (product.price * 0.08),
                         shipping: (product.price * 0.15),
-                        name: product.name,
-                        picture: product.pictures,
-                        categories: product.categories,
+                        name: product.name
                 }
 
                 var cartId = $cookieStore.get('cart')._id;
@@ -43,13 +42,13 @@ angular.module('stackstoreApp')
                         console.log(data, 'dataaaaaaaaaaaaaaaaaa')
 
                     })
-                        
+
                 })
 
-                
-               
 
-            
+
+
+
 
                 // console.log($cookieStore.get('cart'), '<-----cookie data')
                 // console.log(cart, "<-----cart")
@@ -99,11 +98,21 @@ angular.module('stackstoreApp')
                         deferred.resolve(product);
                     })
                     .error(function(err) {
-                        
+
                         deferred.reject("error string");
                     });
 
                 return deferred.promise
+            },
+            allItemsInDataBase: function () {
+              var deferred = $q.defer();
+              $http.get('/api/product')
+                   .success(function(product) {
+                        deferred.resolve(product);
+                    })
+                    .error(function(err) {
+                        deferred.reject("error string");
+                    });
             },
             cart: function() {
                 var products;
@@ -115,7 +124,7 @@ angular.module('stackstoreApp')
             },
             products: [],
             takeout: function(products, cartId) {
-                
+
                  return $http.get('/api/carts/' + cartId).success(function(data){
                     var returnCart = data
                     returnCart.lineItems.splice(newLineItem)
@@ -134,7 +143,7 @@ angular.module('stackstoreApp')
 
                     returnCart.lineItems = update
                     $http.put('/api/carts/' + id, returnCart).then(function(data) {
-                    
+
                 });
                 })
                 }

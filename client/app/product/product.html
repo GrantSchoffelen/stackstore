@@ -1,14 +1,15 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 <div class="row">
-  <div class="col-md-2 recomendations">
-    <p class="lead">Recomendations</p>
-    <div>is available?
-       </div>
-    <div class="list-group">
-      <a href="#" class="list-group-item active">ITEMS here</a>
+  <div  class="col-md-3 recomendations">
+    <div ng-repeat='cat in productFromCat'>
+      <div class="thumbnail">
+        <h6>{{cat.name}}</h6>
+          <a href="/product/{{cat._id}}"><img ng-src='{{cat.pictures[0]}}' height="150" width="75" class="img-responsive"></a>
+          <a href="/product/{{cat._id}}" class=" moreInfo btn btn-sdefault">More Info</a>
     </div>
+     </div>
   </div>
-  <div class="col-md-9">
+  <div class="col-md-8">
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="media">
@@ -19,8 +20,8 @@
               <button ng-click='addToCart($scope.product)'class="btn btn-block btn-primary">Add To Cart</button>Quantity
                <span  editable-select="quantity" e-name='quantity'  e-ng-options="s for s in [1, 2, 3, 4, 5]">{{quantity}}</span>
 
-               
-            
+
+
               <a class="btn btn-block btn-primary" href="/cart/{{cartId}}">see Cart</a>
             </div>
           </div>
@@ -35,7 +36,7 @@
             </h5>
             <h4><i>Description:</i></h4>
             <p>{{product.description}}</p>
-             
+
           </div>
         </div>
       </div>

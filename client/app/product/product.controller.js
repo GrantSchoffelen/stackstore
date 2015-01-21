@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('stackstoreApp')
+<<<<<<< HEAD
   .controller('ProductCtrl', function ($scope, Product, $http, socket) {
      $scope.products= Product.all();
 
@@ -96,6 +97,33 @@ $scope.cartId = $cookieStore.get('cart')._id;
     // promise way
     Product.get($stateParams.id).then(function(data) {
       $scope.product = data;
+=======
+    .controller('ProductCtrl', function($scope, Product, $http, socket) {
+        $scope.products = Product.all();
+        //  this.getData = function (){
+        //     return $http.get('/api/product').then(function (response) {
+
+        //       return response.data;
+        //    // console.log(cartData)
+        //   })
+        // }
+
+        // $scope.products = this.getData()
+
+
+    })
+    .controller('ProductDetailCtrl', function($scope, Product, $http, $stateParams, $cookieStore) {
+        // async way
+        // Product.get($stateParams.id, function(product) {
+        //   $scope.product = product;
+        // });
+        $scope.quantity = 1;
+
+        $scope.cartId = $cookieStore.get('cart')._id;
+        // promise way
+        Product.get($stateParams.id).then(function(data) {
+            $scope.product = data;
+>>>>>>> master
             console.log($scope.product.categories[0])
 
             Product.all().then(function(data) {
@@ -114,6 +142,7 @@ $scope.cartId = $cookieStore.get('cart')._id;
                 // console.log($scope.categoriesProduct.data[i].categories[0])
                 console.log($scope.productFromCat)
             })
+<<<<<<< HEAD
     });
 
     // $scope.test = function() {
@@ -126,19 +155,41 @@ $scope.cartId = $cookieStore.get('cart')._id;
       
         Product.addCart($scope.product, $scope.quantity).then(function(cartData) {
             
+=======
+>>>>>>> master
         });
-    }
- 
 
-     // $scope.addToCart= function($stateParams){
-     //    $http.post('/api/cart').success(function () {
+        // $scope.test = function() {
+        // console.log($scope.product)
 
-     //    })
-     //  }
-  })
+        // };
+
+        // console.log($scope.product)
+        $scope.addToCart = function(data, quantity) {
+
+            Product.addCart($scope.product, $scope.quantity).then(function(cartData) {
+
+            });
+        }
+
+
+        // $scope.addToCart= function($stateParams){
+        //    $http.post('/api/cart').success(function () {
+
+        //    })
+        //  }
+    })
 ///this is for when we get to http get request
+<<<<<<< HEAD
   // .controller('ProductDetailCtrl', function($scope, Product, $stateParams) {
   //   debugger;
   //   Product.get(parseInt($stateParams.id)).then(function(produc))
   //   console.log($scope.product);
   // })
+=======
+// .controller('ProductDetailCtrl', function($scope, Product, $stateParams) {
+//   debugger;
+//   Product.get(parseInt($stateParams.id)).then(function(produc))
+//   console.log($scope.product);
+// })
+>>>>>>> master

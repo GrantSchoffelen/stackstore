@@ -61,25 +61,26 @@
         <div class="panel-body">
 
           <hr>
-          <div class="row" ng-repeat='product in products' >
+          <div class="row" ng-repeat='product in products'>
             <div class="col-xs-2"><img class="img-responsive" ng-src="{{product.pictures[0]}}">
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-5">
               <h4 class="product-name"><strong>{{product.name}}</strong></h4><h4><small>{{product.isActive}}</small></h4>
             </div>
-            <div class="col-xs-6"
-              <div class="col-xs-6 text-right">
-                <h6><strong>{{product.price | currency}}<span class="text-muted">x</span></strong></h6>
-              </div>
-             <!--  <div ng-repeat= 'line in cartLineItems' class="col-xs-4">
-                <input type="text"  class="form-control input-sm" value="{{line.quantity}}">
-              </div> -->
+            <div class="col-xs-3">
+              
+                <h6><strong>{{product.price | currency}}<span class="text-muted"> x </span>{{cartLineItems[$index].quantity}}</strong></h6>
+            </div>
               <div class="col-xs-2">
                 <button ng-click='deleteFilteredItem(product._id, cartLineItems)' type="button" class="btn btn-link btn-xs">
                   <span class="glyphicon glyphicon-trash"></span>
                 </button>
               </div>
+          
+             
             </div>
+            
+
           </div>
 
           <hr>
@@ -104,12 +105,13 @@
         <div class="panel-footer">
           <div class="row text-center">
             <div class="col-xs-9">
-              <h4 class="text-right">Total <strong>{{totalCost | currency}}</strong></h4>
+              <h4 class="text-right">Total <strong>{{totalFinal | currency}}</strong></h4>
             </div>
             <div class="col-xs-3">
-              <button type="button" class="btn btn-success btn-block">
+              
+              <button type="button" ng-click="ifLoggedIn(isLoggedIn())" ng-class="{active: isActive('/signup')}" class="btn btn-success btn-block">
                 Checkout
-              </button>
+              </button> 
             </div>
           </div>
         </div>
@@ -117,12 +119,7 @@
     </div>
   </div>
 </div>
-Products
-{{products}}
 
-<br><br><br><br><br><br><br>
-cart line items
 {{cartLineItems}}
-
 
 
