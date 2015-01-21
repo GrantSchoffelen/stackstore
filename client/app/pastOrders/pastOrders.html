@@ -3,6 +3,7 @@
 
 
 
+<div class = 'container'>
 
 
 <br>
@@ -13,6 +14,7 @@
 <br>
 <br>
 <br>
+<h2>Past Orders</h2>
 <ul class="list-group">
     <li class="list-group-item" ng-repeat="order in pastOrders  | filter:{ status: 'ClosedCart' }">
       <strong >Order ID: {{order._id}}</strong><br>
@@ -24,6 +26,7 @@
       </ul>
       
       
-      <a ng-click="delete(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+     
     </li>
   </ul>
+</div>

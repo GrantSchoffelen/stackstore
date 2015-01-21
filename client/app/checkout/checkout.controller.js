@@ -36,6 +36,7 @@ angular.module('stackstoreApp')
  $scope.handleStripe = function(status, response){
         if(response.error) {
           console.log('card declined')
+          $scope.cardDeclined = true; 
 
         } else {
           console.log(response)
@@ -43,8 +44,9 @@ angular.module('stackstoreApp')
           console.log(token)
           $scope.order.status = "ClosedCart"
           $http.put('/api/carts/'+ $scope.order._id, $scope.order).success(function(data){
-            console.log(data)
           $cookieStore.remove('cart')
+          $scope.cardDeclined = false;
+          $scope.payed = true; 
           })
 
 //   Stripe.charges.create({

@@ -49,7 +49,6 @@ angular.module('stackstoreApp')
           $scope.totalShipping -= Number((sourceArray[index].shipping))
           $scope.totalQuantity -= Number((sourceArray[index].totalPrice))
           $scope.totalFinal -= Number((sourceArray[index].tax + sourceArray[index].shipping + sourceArray[index].totalPrice))
-         
           sourceArray.splice(index, 1);
           $scope.products.splice(index, 1)
           Product.updateCart($stateParams.id, sourceArray)
