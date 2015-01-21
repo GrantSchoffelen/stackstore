@@ -8,6 +8,14 @@ angular.module('stackstoreApp')
             $scope.products = data
         });
 
+       $scope.getOrders = function(){
+        $http.get('/api/carts/').success(function(carts){
+            $scope.carts = carts
+        
+        })
+       }
+       $scope.getOrders()
+
         // $scope.categ = {
         //    status: []
         //  };
@@ -40,11 +48,20 @@ angular.module('stackstoreApp')
             }
 
             $http.post('/api/product/', $scope.newProduct).success(function(productsFromDb) {
-                console.log('new product', $scope.newProduct);
+                // console.log('new product', $scope.newProduct);
                 Product.all().success(function(data) {
                     $scope.products = data
                     //   console.log("data from db", $scope.products);
                 });
+            })
+        }
+
+        $scope.updateUser = function(user){
+            console.log(user._id, 'userssss on admin html')
+            $http.put('/api/users/update/'+ user._id, user).success(function(users){
+                console.log(user, 'user updated after success')
+                
+
             })
         }
 
@@ -72,8 +89,8 @@ angular.module('stackstoreApp')
             //   if (prod.name !== oneProduct.name)
             //     console.log('there is no problem here')
             // }
-            console.log('name of prod', prod.name)
-            console.log('name of prodcut', $scope.products[0].name)
+            // console.log('name of prod', prod.name)
+            // console.log('name of prodcut', $scope.products[0].name)
             var nameNoGood = false;
             for (var i = 0; i < $scope.products.length; i++) {
                 if ($scope.products[i].name === prod.name) {
@@ -85,7 +102,7 @@ angular.module('stackstoreApp')
             console.log('before updateeeeeeeeeeeeeeeeeeeeee', prod)
             if (nameNoGood == false) {
                 $http.put('/api/product/' + prod._id, prod).success(function(productsFromDb) {
-                    console.log('updated product', productsFromDb);
+                    // console.log('updated product', productsFromDb);
                 })
             } else {
                 $mdToast.show(
@@ -141,8 +158,7 @@ angular.module('stackstoreApp')
     
 
         $scope.showCategories = function(prod_param) {
-
-            console.log("prod_param ======== ", prod_param);
+            // console.log("prod_param ======== ", prod_param);
 
             var selected = [];
             angular.forEach($scope.categories, function(one_category_object) {
