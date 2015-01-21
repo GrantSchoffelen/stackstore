@@ -91,10 +91,29 @@ $scope.getNumber = function(reviewRating){
     //   $scope.product = product;
     // });
 $scope.quantity = 1; 
+
 $scope.cartId = $cookieStore.get('cart')._id;
     // promise way
     Product.get($stateParams.id).then(function(data) {
       $scope.product = data;
+            console.log($scope.product.categories[0])
+
+            Product.all().then(function(data) {
+
+                $scope.categoriesProduct = data;
+
+                $scope.productFromCat = [];
+                for (var i = 0; i < $scope.categoriesProduct.data.length; i++) {
+                    if ($scope.categoriesProduct.data[i].categories[0] === $scope.product.categories[0]) {
+                        $scope.productFromCat.push($scope.categoriesProduct.data[i])
+                        console.log($scope.categoriesProduct.data[i])
+
+                        // $scope.productFromCat.push($scope.categoriesProduct.data[i].categories)
+                    }
+                };
+                // console.log($scope.categoriesProduct.data[i].categories[0])
+                console.log($scope.productFromCat)
+            })
     });
 
     // $scope.test = function() {
