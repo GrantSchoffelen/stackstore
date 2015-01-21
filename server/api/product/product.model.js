@@ -4,7 +4,11 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var ProductSchema = new Schema({
-  name: {type:String, required: true, unique: true },
+    name: {
+        type: String,
+        required: true,
+        unique: true
+    },
   description: String,
   price: Number,
   isAvailable: Boolean,
@@ -16,12 +20,14 @@ var ProductSchema = new Schema({
 
 ProductSchema
 .pre('save', function(next){
-	this.categories.push("all")
-	next();
+    this.categories.push("all")
+    next();
 })
 .path('name').validate(function(value, respond) {
     var self = this;
-    this.constructor.findOne({name: value}, function(err, product) {
+        this.constructor.findOne({
+            name: value
+        }, function(err, product) {
       if(err) throw err;
       // if(user) {
       //   if(self.id === user.id) return respond(true);
@@ -37,8 +43,4 @@ var validatePresenceOf = function(value) {
 
 
 module.exports = mongoose.model('Product', ProductSchema);
-
-
-
-
 
